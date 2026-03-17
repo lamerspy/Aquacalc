@@ -19,7 +19,7 @@
 
 Использование в **личных и коммерческих целях разрешено**.
 
-Подробнее см. https://github.com/Spynik420/AQUACALC/blob/main/LICENSE.txt
+Подробнее см. [https://github.com/Spynik420/AQUACALC/blob/main/LICENSE.txt](https://github.com/lamerspy/Aquacalc/blob/main/LICENSE.txt)
 
 ## ⚠️ Отказ от ответственности
 
