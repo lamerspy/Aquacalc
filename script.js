@@ -1,18 +1,19 @@
 // ============================================================================
 // ПРОВЕРКА ПАРОЛЯ
 // ============================================================================
-const SITE_PASSWORD = ''; // ⚠️ ЗАМЕНИТЕ НА СВОЙ ПАРОЛЬ!
+const SITE_PASSWORD = '';
+
 function checkPassword() {
     const input = document.getElementById('passwordInput').value;
     const overlay = document.getElementById('loginOverlay');
     const mainContent = document.getElementById('mainContent');
     const error = document.getElementById('loginError');
+
     if (input === SITE_PASSWORD) {
         overlay.style.display = 'none';
         mainContent.style.display = 'block';
         sessionStorage.setItem('isLoggedIn', 'true');
         calculate();
-        fetchVisitorCount(); // Запуск счётчика при входе
     } else {
         error.style.display = 'block';
         error.textContent = 'Неверный пароль!';
@@ -24,11 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const isLoggedIn = sessionStorage.getItem('isLoggedIn');
     const overlay = document.getElementById('loginOverlay');
     const mainContent = document.getElementById('mainContent');
+
     if (isLoggedIn === 'true') {
         overlay.style.display = 'none';
         mainContent.style.display = 'block';
         calculate();
-        fetchVisitorCount(); // Запуск счётчика при авто-входе
     } else {
         overlay.style.display = 'flex';
         mainContent.style.display = 'none';
@@ -41,45 +42,27 @@ document.getElementById('passwordInput').addEventListener('keypress', (e) => {
 });
 
 // ============================================================================
-// СЧЁТЧИК ПОСЕТИТЕЛЕЙ (Через бесплатный API)
-// ============================================================================
-async function fetchVisitorCount() {
-    // Уникальный идентификатор для вашего проекта
-    const counterId = 'aquacalc-unique-id-2026'; 
-    const namespace = 'visits';
-    
-    try {
-        // Используем сервис countapi.xyz (бесплатно, без ключа)
-        const response = await fetch(`https://api.countapi.xyz/hit/${counterId}/${namespace}`);
-        const data = await response.json();
-        const countElement = document.getElementById('visitorCount');
-        if (countElement) {
-            countElement.textContent = data.value;
-        }
-    } catch (error) {
-        console.error('Ошибка получения статистики:', error);
-        const countElement = document.getElementById('visitorCount');
-        if (countElement) countElement.textContent = 'N/A';
-    }
-}
-
-// ============================================================================
 // КОНСТАНТЫ (из Delphi-кода)
 // ============================================================================
 const CA_PER_GH = 7.1446;
 const MG_PER_GH = 4.3062;
+
 const C_CASO4_2H2O = 0.030702;
 const C_CACL2 = 0.019786;
 const C_CACL2_2H2O = 0.026205;
 const C_CACL2_6H2O = 0.039058;
+
 const C_MGSO4_7H2O = 0.043669;
 const C_MGSO4 = 0.021325;
 const C_MGCL2_6H2O = 0.035999;
+
 const C_K2SO4 = 0.002228;
 const C_KCL = 0.001907;
 const C_K2CO3 = 0.001767;
 const TARGET_K_PPM = 3.0;
+
 const C_NAHCO3_PER_DKH = 0.029994;
+
 const M_CA = 40.078;
 const M_MG = 24.305;
 const M_NA = 22.990;
@@ -98,6 +81,7 @@ const M_NAHCO3 = 84.007;
 const M_K2SO4 = 174.259;
 const M_KCL = 74.5513;
 const M_K2CO3 = 138.205;
+
 const GH_TO_CACO3 = 17.848;
 const KH_TO_CACO3 = 17.848;
 
@@ -110,6 +94,7 @@ function calculate() {
     const volume = parseFloat(document.getElementById('editVolume').value.replace(',', '.')) || 0;
     let targetRatio = parseFloat(document.getElementById('Ca_Mg').value.replace(',', '.')) || 0;
     if (targetRatio <= 0) targetRatio = 1.11;
+
     const caSaltIndex = parseInt(document.getElementById('CaBox').value);
     const mgSaltIndex = parseInt(document.getElementById('MgBox').value);
     const kSaltIndex = parseInt(document.getElementById('KBox').value);
@@ -247,7 +232,7 @@ function calculate() {
     // Info bar
     let infoText = '';
     if (gh === 0) {
-        infoText = `GH ≈ 0.0 | KH ≈ 0.0 | Ca:Mg ≈ 0.00 :1`;
+        infoText = `GH ≈ 0.0 | KH ≈ 0.0 | Ca:Mg ≈ 0.00:1`;
     } else if (mgPpm === 0) {
         infoText = `GH ≈ ${fmt(gh, 1)} | KH ≈ ${fmt(totalKh, 2)} | Ca:Mg ≈ ∞:1`;
     } else {
@@ -307,10 +292,12 @@ function resetSettings() {
 function exportToHtml() {
     const now = new Date().toLocaleString('ru-RU');
     const getVal = (id) => document.getElementById(id).textContent;
+
     const html = `<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AquaCalc Log</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -440,6 +427,7 @@ function exportToHtml() {
         <h1>🐟 AQUACALC LOG</h1>
         <p>${now}</p>
     </div>
+
     <div class="section">
         <h2>ЖЕЛАЕМЫЕ ПАРАМЕТРЫ</h2>
         <table>
@@ -449,6 +437,7 @@ function exportToHtml() {
             <tr><td>Соотношение Ca:Mg</td><td><span class="value-box">${document.getElementById('Ca_Mg').value} : 1</span></td></tr>
         </table>
     </div>
+
     <div class="section">
         <h2>НЕОБХОДИМО ВНЕСТИ</h2>
         <table>
@@ -458,6 +447,7 @@ function exportToHtml() {
             <tr><td>${getVal('saltKName')}</td><td><span class="value-box">${getVal('Label_K')}</span></td></tr>
         </table>
     </div>
+
     <div class="section">
         <h2>РЕЗУЛЬТАТЫ РАСЧЁТА</h2>
         <div class="summary-grid">
@@ -475,6 +465,7 @@ function exportToHtml() {
             </div>
         </div>
     </div>
+
     <div class="section">
         <h2>ИОННЫЙ СОСТАВ ВОДЫ</h2>
         <table>
@@ -487,17 +478,19 @@ function exportToHtml() {
             <tr><td>HCO₃⁻</td><td>${getVal('Label_HCO3')}</td></tr>
         </table>
     </div>
+
     <div class="footer">
         <p>PlecoHobby © ${new Date().getFullYear()}</p>
         <p>Профессионализм в каждой капле.</p>
     </div>
 </body>
 </html>`;
+
     const blob = new Blob([html], { type: 'text/html' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `aquacalc_log_${new Date().toISOString().slice(0, 19).replace(/:/g, '-')}.html`;
+    a.download = `aquacalc_log_${new Date().toISOString().slice(0,19).replace(/:/g,'-')}.html`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -511,6 +504,7 @@ function setupModal() {
     const modal = document.getElementById('aboutModal');
     const btn = document.getElementById('btnAbout');
     const close = document.querySelector('.close');
+
     btn.addEventListener('click', () => modal.style.display = 'block');
     close.addEventListener('click', () => modal.style.display = 'none');
     window.addEventListener('click', (e) => {
@@ -524,10 +518,12 @@ function setupModal() {
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('year').textContent = new Date().getFullYear();
     loadSettings();
+
     const inputs = ['editHardness', 'editKH', 'editVolume', 'Ca_Mg'];
     inputs.forEach(id => {
         const el = document.getElementById(id);
         el.addEventListener('input', calculate);
+        // УБРАНА замена точки на запятую - теперь только точки
     });
 
     document.getElementById('CaBox').addEventListener('change', calculate);

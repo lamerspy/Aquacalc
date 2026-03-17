@@ -7,229 +7,240 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Экран блокировки -->
-    <div id="loginOverlay" class="login-overlay">
-        <div class="login-box">
-            <h2>🔒 Введите пароль</h2>
-            <input type="password" id="passwordInput" placeholder="Пароль">
-            <button onclick="checkPassword()">Войти</button>
-            <p id="loginError" class="error"></p>
-        </div>
+<!-- Блокировка входа -->
+<div id="loginOverlay" class="login-overlay">
+    <div class="login-box">
+        <h2>🔒 Введите пароль</h2>
+        <input type="password" id="passwordInput" placeholder="Пароль">
+        <button onclick="checkPassword()">Войти</button>
+        <p id="loginError" class="error"></p>
     </div>
+</div>
 
-    <!-- Основной контент -->
-    <div id="mainContent" class="container">
+<div class="container" id="mainContent" style="display:none;">
+    <div class="container">
         <header>
             <h1>🐟 AquaCalc</h1>
             <p class="subtitle">Калькулятор минерализации воды для аквариума</p>
         </header>
 
-        <div class="card">
-            <h2>Желаемые параметры</h2>
-            <div class="input-grid">
-                <div class="input-group">
-                    <label>Общая жёсткость (GH)</label>
-                    <div class="input-with-unit">
-                        <input type="text" id="editHardness" value="6">
-                        <span class="unit-inline">°dGH</span>
+        <main>
+            <!-- Ввод параметров -->
+            <section class="card input-section">
+                <h2>Желаемые параметры</h2>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="editHardness">Общая жёсткость (GH)</label>
+                        <div class="input-with-unit">
+                            <input type="text" id="editHardness" value="6" pattern="[0-9.,]*">
+                            <span class="unit-inline">°dGH</span>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="editKH">Карбонатная жёсткость (KH)</label>
+                        <div class="input-with-unit">
+                            <input type="text" id="editKH" value="2.0" pattern="[0-9.,]*">
+                            <span class="unit-inline">°dKH</span>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="editVolume">Объём воды</label>
+                        <div class="input-with-unit">
+                            <input type="text" id="editVolume" value="10" pattern="[0-9.,]*">
+                            <span class="unit-inline">л</span>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="Ca_Mg">Соотношение Ca:Mg</label>
+                        <div class="input-with-unit">
+                            <input type="text" id="Ca_Mg" value="4" pattern="[0-9.,]*">
+                            <span class="unit-inline">: 1</span>
+                        </div>
                     </div>
                 </div>
-                <div class="input-group">
-                    <label>Карбонатная жёсткость (KH)</label>
-                    <div class="input-with-unit">
-                        <input type="text" id="editKH" value="2.0">
-                        <span class="unit-inline">°dKH</span>
+            </section>
+
+            <!-- Выбор солей -->
+            <section class="card salts-section">
+                <h2>Выбор препаратов</h2>
+                <div class="salts-grid">
+                    <div class="salt-group">
+                        <label for="CaBox">Источник кальция</label>
+                        <select id="CaBox">
+                            <option value="0">CaSO₄·2H₂O (гипс)</option>
+                            <option value="1">CaCl₂ (безводный)</option>
+                            <option value="2">CaCl₂·2H₂O (дигидрат)</option>
+                            <option value="3">CaCl₂·6H₂O</option>
+                        </select>
+                    </div>
+                    <div class="salt-group">
+                        <label for="MgBox">Источник магния</label>
+                        <select id="MgBox">
+                            <option value="0">MgSO₄·7H₂O (эпсом)</option>
+                            <option value="1">MgSO₄ (безводный)</option>
+                            <option value="2">MgCl₂·6H₂O</option>
+                        </select>
+                    </div>
+                    <div class="salt-group">
+                        <label for="KBox">Источник калия</label>
+                        <select id="KBox">
+                            <option value="0">K₂SO₄</option>
+                            <option value="1">KCl</option>
+                            <option value="2">K₂CO₃</option>
+                        </select>
                     </div>
                 </div>
-                <div class="input-group">
-                    <label>Объём воды</label>
-                    <div class="input-with-unit">
-                        <input type="text" id="editVolume" value="10">
-                        <span class="unit-inline">л</span>
+            </section>
+
+<!-- Результаты -->
+<section class="card results-section">
+    <h2>Необходимо внести</h2>
+    <div class="results-grid">
+        <div class="result-item">
+            <span class="result-label" id="saltCaName">CaSO₄·2H₂O</span>
+            <span class="result-value" id="lblCaValue">0.00 г</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label" id="saltMgName">MgSO₄·7H₂O</span>
+            <span class="result-value" id="lblMgValue">0.00 г</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label">NaHCO₃</span>
+            <span class="result-value" id="lblNaHCO3Value">0.00 г</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label" id="saltKName">KCl</span>
+            <span class="result-value" id="Label_K">0.00 г</span>
+        </div>
+    </div>
+</section>
+            <!-- Ионный состав -->
+            <section class="card ion-section">
+                <h2>Ионный состав воды</h2>
+                <div class="ion-grid">
+                    <div class="ion-item">
+                        <span class="ion-name">Ca²⁺</span>
+                        <span class="ion-value" id="Label3">0.0 мг/л</span>
+                    </div>
+                    <div class="ion-item">
+                        <span class="ion-name">Mg²⁺</span>
+                        <span class="ion-value" id="Label10">0.0 мг/л</span>
+                    </div>
+                    <div class="ion-item">
+                        <span class="ion-name">Na⁺</span>
+                        <span class="ion-value" id="Label_Na">0.0 мг/л</span>
+                    </div>
+                    <div class="ion-item">
+                        <span class="ion-name">K⁺</span>
+                        <span class="ion-value" id="Label_Ka">0.0 мг/л</span>
+                    </div>
+                    <div class="ion-item">
+                        <span class="ion-name">SO₄²⁻</span>
+                        <span class="ion-value" id="Label15">0.0 мг/л</span>
+                    </div>
+                    <div class="ion-item">
+                        <span class="ion-name">Cl⁻</span>
+                        <span class="ion-value" id="Label5">0.0 мг/л</span>
+                    </div>
+                    <div class="ion-item">
+                        <span class="ion-name">HCO₃⁻</span>
+                        <span class="ion-value" id="Label_HCO3">0.0 мг/л</span>
                     </div>
                 </div>
-                <div class="input-group">
-                    <label>Соотношение Ca:Mg</label>
-                    <div class="input-with-unit">
-                        <input type="text" id="Ca_Mg" value="4">
-                        <span class="unit-inline">: 1</span>
+            </section>
+
+            <!-- Сводка -->
+            <section class="card summary-section">
+                <h2>Сводка</h2>
+                <div class="summary-grid">
+                    <div class="summary-card">
+                        <div class="summary-label">TDS</div>
+                        <div class="summary-value" id="Label_TDC">0 ppm</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-label">TH (CaCO₃)</div>
+                        <div class="summary-value" id="Label_TH_CaCO3">0 мг/л</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-label">KH</div>
+                        <div class="summary-value" id="Label_KH">0 °dKH</div>
                     </div>
                 </div>
-            </div>
-        </div>
+                <div class="info-bar" id="Label_info">
+                    GH ≈ 0.0 | KH ≈ 0.0 | Ca:Mg ≈ 0.00:1
+                </div>
+            </section>
 
-        <div class="card">
-            <h2>Выбор препаратов</h2>
-            <div class="salts-grid">
-                <div class="salt-group">
-                    <label>Источник кальция</label>
-                    <select id="CaBox">
-                        <option value="0">CaSO₄·2H₂O (гипс)</option>
-                        <option value="1">CaCl₂ (безводный)</option>
-                        <option value="2">CaCl₂·2H₂O (дигидрат)</option>
-                        <option value="3">CaCl₂·6H₂O</option>
-                    </select>
-                </div>
-                <div class="salt-group">
-                    <label>Источник магния</label>
-                    <select id="MgBox">
-                        <option value="0">MgSO₄·7H₂O (эпсом)</option>
-                        <option value="1">MgSO₄ (безводный)</option>
-                        <option value="2">MgCl₂·6H₂O</option>
-                    </select>
-                </div>
-                <div class="salt-group">
-                    <label>Источник калия</label>
-                    <select id="KBox">
-                        <option value="0">K₂SO₄</option>
-                        <option value="1">KCl</option>
-                        <option value="2">K₂CO₃</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2>Необходимо внести</h2>
-            <div class="results-grid">
-                <div class="result-item">
-                    <span class="result-label" id="saltCaName">CaSO₄·2H₂O</span>
-                    <span class="result-value" id="lblCaValue">0.00 г</span>
-                </div>
-                <div class="result-item">
-                    <span class="result-label" id="saltMgName">MgSO₄·7H₂O</span>
-                    <span class="result-value" id="lblMgValue">0.00 г</span>
-                </div>
-                <div class="result-item">
-                    <span class="result-label">NaHCO₃</span>
-                    <span class="result-value" id="lblNaHCO3Value">0.00 г</span>
-                </div>
-                <div class="result-item">
-                    <span class="result-label" id="saltKName">KCl</span>
-                    <span class="result-value" id="Label_K">0.00 г</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2>Ионный состав воды</h2>
-            <div class="ion-grid">
-                <div class="ion-item">
-                    <span class="ion-name">Ca²⁺</span>
-                    <span class="ion-value" id="Label3">0.0 мг/л</span>
-                </div>
-                <div class="ion-item">
-                    <span class="ion-name">Mg²⁺</span>
-                    <span class="ion-value" id="Label10">0.0 мг/л</span>
-                </div>
-                <div class="ion-item">
-                    <span class="ion-name">Na⁺</span>
-                    <span class="ion-value" id="Label_Na">0.0 мг/л</span>
-                </div>
-                <div class="ion-item">
-                    <span class="ion-name">K⁺</span>
-                    <span class="ion-value" id="Label_Ka">0.0 мг/л</span>
-                </div>
-                <div class="ion-item">
-                    <span class="ion-name">SO₄²⁻</span>
-                    <span class="ion-value" id="Label15">0.0 мг/л</span>
-                </div>
-                <div class="ion-item">
-                    <span class="ion-name">Cl⁻</span>
-                    <span class="ion-value" id="Label5">0.0 мг/л</span>
-                </div>
-                <div class="ion-item">
-                    <span class="ion-name">HCO₃⁻</span>
-                    <span class="ion-value" id="Label_HCO3">0.0 мг/л</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2>Сводка</h2>
-            <div class="summary-grid">
-                <div class="summary-card">
-                    <div class="summary-label">TDS</div>
-                    <div class="summary-value" id="Label_TDC">0 ppm</div>
-                </div>
-                <div class="summary-card">
-                    <div class="summary-label">TH (CaCO₃)</div>
-                    <div class="summary-value" id="Label_TH_CaCO3">0 мг/л</div>
-                </div>
-                <div class="summary-card">
-                    <div class="summary-label">KH</div>
-                    <div class="summary-value" id="Label_KH">0 °dKH</div>
-                </div>
-            </div>
-            <div class="info-bar">
-                <span id="Label_info">GH ≈ 0.0 | KH ≈ 0.0 | Ca:Mg ≈ 0.00:1</span>
-            </div>
-        </div>
-
-        <div class="actions-section">
-            <button class="btn btn-primary" id="btnExport">📥 Скачать отчёт (HTML)</button>
-            <button class="btn btn-secondary" id="btnReset">🔄 Сбросить</button>
-            <button class="btn btn-info" id="btnAbout">ℹ️ Справка</button>
-        </div>
+            <!-- Кнопки действий -->
+            <section class="actions-section">
+                <button id="btnExport" class="btn btn-primary">📥 Скачать отчёт (HTML)</button>
+                <button id="btnReset" class="btn btn-secondary">🔄 Сбросить</button>
+                <button id="btnAbout" class="btn btn-info">ℹ️ Справка</button>
+            </section>
+        </main>
 
         <footer>
-            <div style="margin-bottom: 10px; font-size: 0.9em; color: #7DD3FC;">
-                Посетителей всего: <span id="visitorCount" style="font-weight: bold; color: #22D3EE;">...</span>
-            </div>
             <p>PlecoHobby © <span id="year"></span> | Профессионализм в каждой капле.</p>
         </footer>
     </div>
 
-    <!-- Модальное окно -->
-    <div id="aboutModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="modal-body">
-                <h3>⚠️ ВАЖНОЕ УВЕДОМЛЕНИЕ</h3>
-                <div class="disclaimer">
-                    <p>Данный калькулятор предоставлен исключительно в ознакомительных целях.</p>
-                    <p>Мы не несём ответственности за любые последствия, возникшие в результате использования полученных данных, включая вред здоровью рыб, повреждение оборудования или иные убытки.</p>
-                    <p>Перед применением любых препаратов рекомендуется:</p>
-                    <ul>
-                        <li>Проверить расчёты независимым источником.</li>
-                        <li>Начинать с меньших дозировок.</li>
-                        <li>Контролировать параметры воды тестами.</li>
-                        <li>Наблюдать за состоянием рыб.</li>
-                    </ul>
-                    <p><strong>Используя этот калькулятор, вы принимаете на себя полную ответственность за все действия и их последствия.</strong></p>
-                </div>
+<!-- Модальное окно справки -->
+<div id="aboutModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>⚠️ ВАЖНОЕ УВЕДОМЛЕНИЕ</h2>
+        
+        <div class="disclaimer">
+            <p>⚠️ <strong>ВАЖНОЕ УВЕДОМЛЕНИЕ</strong></p>
+            <p>Данный калькулятор предоставлен исключительно в ознакомительных целях.</p>
+            <p>Мы не несём ответственности за любые последствия, возникшие в результате использования полученных данных, включая вред здоровью рыб, повреждение оборудования или иные убытки.</p>
+            <p>Перед применением любых препаратов рекомендуется:</p>
+            <ul>
+                <li>Проверить расчёты независимым источником.</li>
+                <li>Начинать с меньших дозировок.</li>
+                <li>Контролировать параметры воды тестами.</li>
+                <li>Наблюдать за состоянием рыб.</li>
+            </ul>
+            <p><strong>Используя этот калькулятор, вы принимаете на себя полную ответственность за все действия и их последствия.</strong></p>
+        </div>
 
-                <h3>📄 Лицензия</h3>
-                <div class="license-text">
-                    <div class="copyright-header">📜 LICENSE</div>
-                    <div class="copyright-notice">Copyright (c) 2026 PlecoHobby. All Rights Reserved.</div>
-                    <p><strong>1. ЗАПРЕЩЕНО:</strong></p>
-                    <ul>
-                        <li>Копирование, распространение или использование кода в коммерческих целях без письменного разрешения.</li>
-                        <li>Изменение, модификация или создание производных продуктов.</li>
-                        <li>Продажа, sublicensing или передача прав третьим лицам.</li>
-                    </ul>
-                    <p><strong>2. РАЗРЕШЕНО:</strong></p>
-                    <ul>
-                        <li>Личное использование (некоммерческое).</li>
-                        <li>Просмотр кода в ознакомительных целях.</li>
-                    </ul>
-                    <p><strong>3. КОММЕРЧЕСКОЕ ИСПОЛЬЗОВАНИЕ:</strong></p>
-                    <ul>
-                        <li>Доступно только после приобретения лицензии.</li>
-                        <li>Для покупки обращайтесь: PlecoHobby</li>
-                    </ul>
-                    <p><strong>4. ОТВЕТСТВЕННОСТЬ:</strong></p>
-                    <ul>
-                        <li>Программа предоставляется "КАК ЕСТЬ".</li>
-                        <li>Авторы не несут ответственности за убытки.</li>
-                    </ul>
-                    <div class="warning-final">⚠️ Нарушение данной лицензии влечёт юридическую ответственность.</div>
-                </div>
+        <div class="modal-body">
+            <h3>📄 Лицензия</h3>
+            <div class="license-text">
+                <div class="copyright-header">📜 LICENSE</div>
+                <div class="copyright-notice">Copyright (c) 2026 PlecoHobby. All Rights Reserved.</div>
+                
+                <p><strong>1. ЗАПРЕЩЕНО:</strong></p>
+                <ul>
+                    <li>Копирование, распространение или использование кода в коммерческих целях без письменного разрешения.</li>
+                    <li>Изменение, модификация или создание производных продуктов.</li>
+                    <li>Продажа, sublicensing или передача прав третьим лицам.</li>
+                </ul>
+                
+                <p><strong>2. РАЗРЕШЕНО:</strong></p>
+                <ul>
+                    <li>Личное использование (некоммерческое).</li>
+                    <li>Просмотр кода в ознакомительных целях.</li>
+                </ul>
+                
+                <p><strong>3. КОММЕРЧЕСКОЕ ИСПОЛЬЗОВАНИЕ:</strong></p>
+                <ul>
+                    <li>Доступно только после приобретения лицензии.</li>
+                    <li>Для покупки обращайтесь: PlecoHobby</li>
+                </ul>
+                
+                <p><strong>4. ОТВЕТСТВЕННОСТЬ:</strong></p>
+                <ul>
+                    <li>Программа предоставляется "КАК ЕСТЬ".</li>
+                    <li>Авторы не несут ответственности за убытки.</li>
+                </ul>
+                
+                <p class="warning-final">⚠️ Нарушение данной лицензии влечёт юридическую ответственность.</p>
             </div>
         </div>
     </div>
-
-    <script src="script.js"></script>
+</div>
+</div> <!-- Конец mainContent -->
+<script src="script.js"></script>
 </body>
 </html>
