@@ -448,18 +448,17 @@ footer {
     font-size: 1.05em;
 }
 
-/* Списки с точками */
 .license-text ul {
     margin-left: 25px;
     margin-bottom: 15px;
     color: #7DD3FC;
-    list-style-type: disc;  /* Включаем точки */
+    list-style-type: disc;
 }
 
 .license-text li {
     margin-bottom: 6px;
     padding-left: 5px;
-    list-style-type: disc;  /* Включаем точки */
+    list-style-type: disc;
 }
 
 .license-text .warning-final {
