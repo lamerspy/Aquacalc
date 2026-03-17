@@ -1,0 +1,13 @@
+{
+  "name": "AquaCalc",
+  "short_name": "AquaCalc",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0284C7",
+  "theme_color": "#0369A1",
+  "icons": [{
+    "src": "img/favicon.png",
+    "sizes": "32x32",
+    "type": "image/png"
+  }]
+}
