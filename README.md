@@ -4,8 +4,7 @@
 
 ## 🚀 Использование
 
-Просто откройте `index.html` в браузере или посетите сайт:  
-**https://spynik420.github.io/AQUACALC/**
+Просто откройте `index.html` в браузере или посетите сайт: [https://spynik420.github.io/AQUACALC/](https://lamerspy.github.io/Aquacalc/)
 
 ## 📋 Функционал
 
