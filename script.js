@@ -1,30 +1,68 @@
 // ============================================================================
+// ПРОВЕРКА ПАРОЛЯ
+// ============================================================================
+const SITE_PASSWORD = '';
+
+function checkPassword() {
+    const input = document.getElementById('passwordInput').value;
+    const overlay = document.getElementById('loginOverlay');
+    const mainContent = document.getElementById('mainContent');
+    const error = document.getElementById('loginError');
+
+    if (input === SITE_PASSWORD) {
+        overlay.style.display = 'none';
+        mainContent.style.display = 'block';
+        sessionStorage.setItem('isLoggedIn', 'true');
+        calculate();
+    } else {
+        error.style.display = 'block';
+        error.textContent = 'Неверный пароль!';
+    }
+}
+
+// Проверка при загрузке
+document.addEventListener('DOMContentLoaded', () => {
+    const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+    const overlay = document.getElementById('loginOverlay');
+    const mainContent = document.getElementById('mainContent');
+
+    if (isLoggedIn === 'true') {
+        overlay.style.display = 'none';
+        mainContent.style.display = 'block';
+        calculate();
+    } else {
+        overlay.style.display = 'flex';
+        mainContent.style.display = 'none';
+    }
+});
+
+// Вход по Enter
+document.getElementById('passwordInput').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') checkPassword();
+});
+
+// ============================================================================
 // КОНСТАНТЫ (из Delphi-кода)
 // ============================================================================
-const CA_PER_GH = 7.1446;    // мг Ca²⁺ → 1 °dGH в 1 л
-const MG_PER_GH = 4.3062;    // мг Mg²⁺ → 1 °dGH в 1 л
+const CA_PER_GH = 7.1446;
+const MG_PER_GH = 4.3062;
 
-// Коэффициенты для кальция (1 °dGH)
 const C_CASO4_2H2O = 0.030702;
 const C_CACL2 = 0.019786;
 const C_CACL2_2H2O = 0.026205;
 const C_CACL2_6H2O = 0.039058;
 
-// Коэффициенты для магния (1 °dGH)
 const C_MGSO4_7H2O = 0.043669;
 const C_MGSO4 = 0.021325;
 const C_MGCL2_6H2O = 0.035999;
 
-// Коэффициенты для калия
 const C_K2SO4 = 0.002228;
 const C_KCL = 0.001907;
 const C_K2CO3 = 0.001767;
 const TARGET_K_PPM = 3.0;
 
-// Для KH
 const C_NAHCO3_PER_DKH = 0.029994;
 
-// Молярные массы (г/моль)
 const M_CA = 40.078;
 const M_MG = 24.305;
 const M_NA = 22.990;
@@ -44,7 +82,6 @@ const M_K2SO4 = 174.259;
 const M_KCL = 74.5513;
 const M_K2CO3 = 138.205;
 
-// Конвертация в CaCO₃
 const GH_TO_CACO3 = 17.848;
 const KH_TO_CACO3 = 17.848;
 
@@ -52,7 +89,6 @@ const KH_TO_CACO3 = 17.848;
 // ГЛАВНАЯ ФУНКЦИЯ РАСЧЁТА
 // ============================================================================
 function calculate() {
-    // Получаем значения из полей
     const gh = parseFloat(document.getElementById('editHardness').value.replace(',', '.')) || 0;
     const kh = parseFloat(document.getElementById('editKH').value.replace(',', '.')) || 0;
     const volume = parseFloat(document.getElementById('editVolume').value.replace(',', '.')) || 0;
@@ -63,7 +99,7 @@ function calculate() {
     const mgSaltIndex = parseInt(document.getElementById('MgBox').value);
     const kSaltIndex = parseInt(document.getElementById('KBox').value);
 
-    // === ОБНОВЛЕНИЕ НАЗВАНИЙ ПРЕПАРАТОВ ===
+    // Обновление названий препаратов
     const caSaltNames = ['CaSO₄·2H₂O', 'CaCl₂', 'CaCl₂·2H₂O', 'CaCl₂·6H₂O'];
     const mgSaltNames = ['MgSO₄·7H₂O', 'MgSO₄', 'MgCl₂·6H₂O'];
     const kSaltNames = ['K₂SO₄', 'KCl', 'K₂CO₃'];
@@ -77,7 +113,6 @@ function calculate() {
     if (document.getElementById('saltKName')) {
         document.getElementById('saltKName').textContent = kSaltNames[kSaltIndex] || 'KCl';
     }
-    // =======================================
 
     // Распределение GH по ионам
     const mgPartGh = gh / (targetRatio * MG_PER_GH / CA_PER_GH + 1);
@@ -85,7 +120,7 @@ function calculate() {
 
     // Расчёт масс солей
     let caGrams = 0, mgGrams = 0;
-    
+
     switch (caSaltIndex) {
         case 0: caGrams = C_CASO4_2H2O * caPartGh * volume; break;
         case 1: caGrams = C_CACL2 * caPartGh * volume; break;
@@ -139,15 +174,15 @@ function calculate() {
     // Калий
     let kSaltMass = 0, kKhContrib = 0;
     switch (kSaltIndex) {
-        case 0: // K₂SO₄
+        case 0:
             kSaltMass = C_K2SO4 * TARGET_K_PPM * volume;
             so4Ppm += kSaltMass * M_SO4 / M_K2SO4 * 1000 / volume;
             break;
-        case 1: // KCl
+        case 1:
             kSaltMass = C_KCL * TARGET_K_PPM * volume;
             clPpm += kSaltMass * M_CL / M_KCL * 1000 / volume;
             break;
-        case 2: // K₂CO₃
+        case 2:
             kSaltMass = C_K2CO3 * TARGET_K_PPM * volume;
             kKhContrib = kSaltMass * 0.722 * 1000 / volume / KH_TO_CACO3;
             break;
@@ -163,24 +198,22 @@ function calculate() {
 
     // TDS
     const totalTds = caPpm + mgPpm + naPpm + TARGET_K_PPM + hco3Ppm + so4Ppm + clPpm;
-
-    // Жёсткость в CaCO₃
     const thCaco3 = gh * GH_TO_CACO3;
 
-    // Форматирование чисел
-    const fmt = (num, decimals = 2) => num.toLocaleString('ru-RU', { 
-        minimumFractionDigits: decimals, 
-        maximumFractionDigits: decimals 
+    // Форматирование чисел (ТОЧКИ вместо запятых)
+    const fmt = (num, decimals = 2) => num.toLocaleString('en-US', {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals
     });
 
-    // === ДОЗИРОВКИ СОЛЕЙ ===
+    // Дозировки солей
     document.getElementById('lblCaValue').textContent = `${fmt(caGrams)} г`;
     document.getElementById('lblMgValue').textContent = `${fmt(mgGrams)} г`;
     document.getElementById('lblNaHCO3Value').textContent = `${fmt(nahco3Grams)} г`;
     document.getElementById('Label_K').textContent = `${fmt(kSaltMass)} г`;
     document.getElementById('Label_Ka').textContent = `${fmt(TARGET_K_PPM, 1)} мг/л`;
 
-    // === ИОННЫЙ СОСТАВ ===
+    // Ионный состав
     document.getElementById('Label3').textContent = `${fmt(caPpm, 1)} мг/л`;
     document.getElementById('Label10').textContent = `${fmt(mgPpm, 1)} мг/л`;
     document.getElementById('Label_Na').textContent = `${fmt(naPpm, 1)} мг/л`;
@@ -189,10 +222,10 @@ function calculate() {
     document.getElementById('Label5').textContent = `${fmt(clPpm, 1)} мг/л`;
     document.getElementById('Label_HCO3').textContent = `${fmt(hco3Ppm, 1)} мг/л`;
 
-    // === СВОДКА ===
+    // Сводка
     document.getElementById('Label_TDC').textContent = `${fmt(totalTds, 1)} ppm`;
     document.getElementById('Label_TH_CaCO3').textContent = `${fmt(thCaco3, 0)} мг/л`;
-    
+
     const totalKh = kh + kKhContrib;
     document.getElementById('Label_KH').textContent = `${fmt(totalKh, 2)} °dKH`;
 
@@ -208,7 +241,6 @@ function calculate() {
     }
     document.getElementById('Label_info').textContent = infoText;
 
-    // Сохранение в localStorage
     saveSettings();
 }
 
@@ -259,7 +291,6 @@ function resetSettings() {
 // ============================================================================
 function exportToHtml() {
     const now = new Date().toLocaleString('ru-RU');
-    
     const getVal = (id) => document.getElementById(id).textContent;
 
     const html = `<!DOCTYPE html>
@@ -270,124 +301,124 @@ function exportToHtml() {
     <title>AquaCalc Log</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
-            font-family: "Consolas", "Courier New", monospace; 
-            max-width: 820px; 
-            margin: 0 auto; 
-            padding: 16px; 
-            background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%); 
-            color: #F0F9FF !important; 
-            line-height: 1.45; 
-            font-size: 15px; 
+        body {
+            font-family: "Consolas", "Courier New", monospace;
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 16px;
+            background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
+            color: #F0F9FF !important;
+            line-height: 1.45;
+            font-size: 15px;
             min-height: 100vh;
         }
-        .header { 
-            text-align: center; 
-            padding: 18px 0; 
-            margin-bottom: 18px; 
-            border-bottom: 1px solid rgba(34, 211, 238, 0.3); 
+        .header {
+            text-align: center;
+            padding: 18px 0;
+            margin-bottom: 18px;
+            border-bottom: 1px solid rgba(34, 211, 238, 0.3);
         }
-        .header h1 { 
-            color: #22D3EE !important; 
-            font-size: 1.5em; 
-            margin-bottom: 6px; 
+        .header h1 {
+            color: #22D3EE !important;
+            font-size: 1.5em;
+            margin-bottom: 6px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
-        .header p { 
-            color: #7DD3FC !important; 
-            font-size: 0.95em; 
+        .header p {
+            color: #7DD3FC !important;
+            font-size: 0.95em;
         }
-        .section { 
-            background: linear-gradient(180deg, rgba(15, 52, 96, 0.98) 0%, rgba(8, 47, 73, 0.98) 100%); 
-            padding: 15px 18px; 
-            margin: 14px 0; 
-            border-radius: 9px; 
-            border: 1px solid rgba(34, 211, 238, 0.35); 
+        .section {
+            background: linear-gradient(180deg, rgba(15, 52, 96, 0.98) 0%, rgba(8, 47, 73, 0.98) 100%);
+            padding: 15px 18px;
+            margin: 14px 0;
+            border-radius: 9px;
+            border: 1px solid rgba(34, 211, 238, 0.35);
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
-        .section h2 { 
-            color: #22D3EE !important; 
-            margin: 0 0 12px 0; 
-            padding-bottom: 9px; 
-            border-bottom: 1px solid rgba(34, 211, 238, 0.3); 
-            font-size: 1.15em; 
+        .section h2 {
+            color: #22D3EE !important;
+            margin: 0 0 12px 0;
+            padding-bottom: 9px;
+            border-bottom: 1px solid rgba(34, 211, 238, 0.3);
+            font-size: 1.15em;
             text-shadow: 0 1px 2px rgba(0,0,0,0.3);
         }
-        table { 
-            width: 100%; 
-            border-collapse: collapse; 
+        table {
+            width: 100%;
+            border-collapse: collapse;
         }
-        th { 
-            background: rgba(21, 94, 117, 0.9); 
-            color: #67E8F9 !important; 
-            padding: 10px 7px; 
-            font-weight: 600; 
-            text-transform: uppercase; 
-            font-size: 0.85em; 
-            border: 1px solid rgba(34, 211, 238, 0.2); 
+        th {
+            background: rgba(21, 94, 117, 0.9);
+            color: #67E8F9 !important;
+            padding: 10px 7px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            border: 1px solid rgba(34, 211, 238, 0.2);
         }
-        td { 
-            padding: 10px 7px; 
-            border-bottom: 1px solid rgba(34, 211, 238, 0.15); 
+        td {
+            padding: 10px 7px;
+            border-bottom: 1px solid rgba(34, 211, 238, 0.15);
             color: #E0F2FE !important;
         }
-        td:first-child { 
-            font-weight: 600; 
-            color: #7DD3FC !important; 
+        td:first-child {
+            font-weight: 600;
+            color: #7DD3FC !important;
         }
-        td:last-child { 
-            text-align: right; 
+        td:last-child {
+            text-align: right;
         }
-        .value-box { 
-            background: linear-gradient(135deg, rgba(21, 94, 117, 0.95) 0%, rgba(15, 52, 96, 0.95) 100%); 
-            padding: 6px 12px; 
-            border-radius: 6px; 
-            border: 1px solid rgba(34, 211, 238, 0.4); 
-            display: inline-block; 
+        .value-box {
+            background: linear-gradient(135deg, rgba(21, 94, 117, 0.95) 0%, rgba(15, 52, 96, 0.95) 100%);
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(34, 211, 238, 0.4);
+            display: inline-block;
             box-shadow: 0 2px 6px rgba(0,0,0,0.15);
             color: #67E8F9 !important;
             font-weight: bold;
         }
-        .summary-grid { 
-            display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 12px; 
-            margin: 12px 0 16px 0; 
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 12px 0 16px 0;
         }
-        .summary-card { 
-            background: linear-gradient(180deg, rgba(21, 94, 117, 0.95) 0%, rgba(15, 52, 96, 0.95) 100%); 
-            padding: 18px 12px; 
-            border-radius: 8px; 
-            text-align: center; 
-            border: 2px solid rgba(34, 211, 238, 0.4); 
+        .summary-card {
+            background: linear-gradient(180deg, rgba(21, 94, 117, 0.95) 0%, rgba(15, 52, 96, 0.95) 100%);
+            padding: 18px 12px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid rgba(34, 211, 238, 0.4);
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
-        .summary-card .label { 
-            color: #22D3EE !important; 
-            font-size: 1.1em; 
-            font-weight: 600; 
-            margin-bottom: 10px; 
+        .summary-card .label {
+            color: #22D3EE !important;
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 10px;
             text-shadow: 0 1px 2px rgba(0,0,0,0.3);
         }
-        .summary-card .value { 
-            color: #67E8F9 !important; 
-            font-size: 1.4em; 
-            font-weight: bold; 
+        .summary-card .value {
+            color: #67E8F9 !important;
+            font-size: 1.4em;
+            font-weight: bold;
             font-family: "Consolas", monospace;
             text-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }
-        .footer { 
-            text-align: center; 
-            margin-top: 22px; 
-            padding-top: 16px; 
-            border-top: 1px solid rgba(34, 211, 238, 0.3); 
-            color: #7DD3FC !important; 
-            font-size: 0.9em; 
+        .footer {
+            text-align: center;
+            margin-top: 22px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(34, 211, 238, 0.3);
+            color: #7DD3FC !important;
+            font-size: 0.9em;
         }
-        @media (max-width: 600px) { 
-            .summary-grid { grid-template-columns: 1fr; } 
-            td, th { padding: 7px 5px; font-size: 0.9em; } 
-            body { padding: 10px; } 
+        @media (max-width: 600px) {
+            .summary-grid { grid-template-columns: 1fr; }
+            td, th { padding: 7px 5px; font-size: 0.9em; }
+            body { padding: 10px; }
         }
     </style>
 </head>
@@ -396,7 +427,7 @@ function exportToHtml() {
         <h1>🐟 AQUACALC LOG</h1>
         <p>${now}</p>
     </div>
-    
+
     <div class="section">
         <h2>ЖЕЛАЕМЫЕ ПАРАМЕТРЫ</h2>
         <table>
@@ -406,7 +437,7 @@ function exportToHtml() {
             <tr><td>Соотношение Ca:Mg</td><td><span class="value-box">${document.getElementById('Ca_Mg').value} : 1</span></td></tr>
         </table>
     </div>
-    
+
     <div class="section">
         <h2>НЕОБХОДИМО ВНЕСТИ</h2>
         <table>
@@ -434,9 +465,9 @@ function exportToHtml() {
             </div>
         </div>
     </div>
-    
+
     <div class="section">
-        <h2>ИОННЫЙ СОСТАВ ВОДЫ</h2>
+        <h2>🔬 ИОННЫЙ СОСТАВ ВОДЫ</h2>
         <table>
             <tr><td>Ca²⁺</td><td>${getVal('Label3')}</td></tr>
             <tr><td>Mg²⁺</td><td>${getVal('Label10')}</td></tr>
@@ -447,9 +478,7 @@ function exportToHtml() {
             <tr><td>HCO₃⁻</td><td>${getVal('Label_HCO3')}</td></tr>
         </table>
     </div>
-    
 
-    
     <div class="footer">
         <p>PlecoHobby © ${new Date().getFullYear()}</p>
         <p>Профессионализм в каждой капле.</p>
@@ -487,37 +516,23 @@ function setupModal() {
 // ИНИЦИАЛИЗАЦИЯ
 // ============================================================================
 document.addEventListener('DOMContentLoaded', () => {
-    // Установить год в футере
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Загрузить настройки
     loadSettings();
 
-    // Навесить обработчики на все поля ввода
     const inputs = ['editHardness', 'editKH', 'editVolume', 'Ca_Mg'];
     inputs.forEach(id => {
         const el = document.getElementById(id);
         el.addEventListener('input', calculate);
-        if (el.tagName === 'INPUT') {
-            el.addEventListener('blur', () => {
-                el.value = el.value.replace('.', ',');
-            });
-        }
+        // УБРАНА замена точки на запятую - теперь только точки
     });
 
-    // === ОБРАБОТЧИКИ ДЛЯ ВЫПАДАЮЩИХ СПИСКОВ ===
     document.getElementById('CaBox').addEventListener('change', calculate);
     document.getElementById('MgBox').addEventListener('change', calculate);
     document.getElementById('KBox').addEventListener('change', calculate);
-    // ===========================================
 
-    // Кнопки
     document.getElementById('btnExport').addEventListener('click', exportToHtml);
     document.getElementById('btnReset').addEventListener('click', resetSettings);
-    
-    // Модальное окно
-    setupModal();
 
-    // Первый расчёт
+    setupModal();
     calculate();
 });

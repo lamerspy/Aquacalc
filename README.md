@@ -4,7 +4,8 @@
 
 ## 🚀 Использование
 
-Просто откройте `index.html` в браузере или посетите сайт: [https://AquaCalc/](https://lamerspy.github.io/Aquacalc/)
+Просто откройте `index.html` в браузере или посетите сайт:  
+**https://lamerspy.github.io/Aquacalc/**
 
 ## 📋 Функционал
 
@@ -16,9 +17,9 @@
 
 ## 📄 Лицензия
 
-Использование в **личных и коммерческих целях разрешено**.
+Использование в личных и коммерческих целях **запрещено** без приобретения лицензии.
 
-Подробнее см. [https://AQUACALC/blob/main/LICENSE.txt](https://github.com/lamerspy/Aquacalc/blob/main/LICENSE.txt)
+Подробнее см. [LICENSE.txt](https://github.com/lamerspy/Aquacalc/blob/main/LICENSE.txt)
 
 ## ⚠️ Отказ от ответственности
 

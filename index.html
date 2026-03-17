@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- Блокировка входа -->
+<div id="loginOverlay" class="login-overlay">
+    <div class="login-box">
+        <h2>🔒 Введите пароль</h2>
+        <input type="password" id="passwordInput" placeholder="Пароль">
+        <button onclick="checkPassword()">Войти</button>
+        <p id="loginError" class="error"></p>
+    </div>
+</div>
+
+<div class="container" id="mainContent" style="display:none;">
     <div class="container">
         <header>
             <h1>🐟 AquaCalc</h1>
@@ -229,7 +240,7 @@
         </div>
     </div>
 </div>
-
+</div> <!-- Конец mainContent -->
 <script src="script.js"></script>
 </body>
 </html>
