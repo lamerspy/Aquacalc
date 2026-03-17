@@ -404,19 +404,48 @@ footer {
 .disclaimer li {
     margin-bottom: 5px;
 }
+/* Лицензия в модальном окне */
 .license-text {
-    background: rgba(21, 94, 117, 0.3);
+    background: linear-gradient(135deg, rgba(21, 94, 117, 0.4) 0%, rgba(15, 52, 96, 0.4) 100%);
     border: 1px solid rgba(34, 211, 238, 0.3);
-    border-radius: 6px;
-    padding: 15px;
+    border-radius: 8px;
+    padding: 18px 20px;
     margin: 15px 0;
-    font-size: 0.85em;
-    line-height: 1.5;
+    font-size: 0.88em;
+    line-height: 1.6;
+}
+
+.license-text .copyright-header {
+    background: linear-gradient(135deg, #22D3EE 0%, #06B6D4 100%);
+    color: #082F49;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin: -18px -20px 15px -20px;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.license-text .copyright-notice {
+    background: rgba(34, 211, 238, 0.1);
+    border-left: 3px solid #22D3EE;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border-radius: 0 6px 6px 0;
+    color: #67E8F9;
+    font-family: 'Consolas', monospace;
+    font-size: 0.95em;
 }
 
 .license-text p {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     color: #BAE6FD;
+}
+
+.license-text strong {
+    color: #22D3EE;
+    font-size: 1.05em;
 }
 
 .license-text ul {
@@ -426,10 +455,18 @@ footer {
 }
 
 .license-text li {
-    margin-bottom: 5px;
+    margin-bottom: 6px;
+    position: relative;
+    padding-left: 5px;
 }
 
-.warning-final {
-    color: #F87171 !important;
+.license-text .warning-final {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    border-radius: 6px;
+    padding: 12px 15px;
     margin-top: 15px !important;
+    color: #F87171;
+    text-align: center;
+    font-weight: bold;
 }
