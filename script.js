@@ -467,7 +467,7 @@ function exportToHtml() {
     </div>
 
     <div class="section">
-        <h2>🔬 ИОННЫЙ СОСТАВ ВОДЫ</h2>
+        <h2>ИОННЫЙ СОСТАВ ВОДЫ</h2>
         <table>
             <tr><td>Ca²⁺</td><td>${getVal('Label3')}</td></tr>
             <tr><td>Mg²⁺</td><td>${getVal('Label10')}</td></tr>
