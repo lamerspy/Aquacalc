@@ -1,47 +1,4 @@
 // ============================================================================
-// ПРОВЕРКА ПАРОЛЯ
-// ============================================================================
-const SITE_PASSWORD = '';
-
-function checkPassword() {
-    const input = document.getElementById('passwordInput').value;
-    const overlay = document.getElementById('loginOverlay');
-    const mainContent = document.getElementById('mainContent');
-    const error = document.getElementById('loginError');
-
-    if (input === SITE_PASSWORD) {
-        overlay.style.display = 'none';
-        mainContent.style.display = 'block';
-        sessionStorage.setItem('isLoggedIn', 'true');
-        calculate();
-    } else {
-        error.style.display = 'block';
-        error.textContent = 'Неверный пароль!';
-    }
-}
-
-// Проверка при загрузке
-document.addEventListener('DOMContentLoaded', () => {
-    const isLoggedIn = sessionStorage.getItem('isLoggedIn');
-    const overlay = document.getElementById('loginOverlay');
-    const mainContent = document.getElementById('mainContent');
-
-    if (isLoggedIn === 'true') {
-        overlay.style.display = 'none';
-        mainContent.style.display = 'block';
-        calculate();
-    } else {
-        overlay.style.display = 'flex';
-        mainContent.style.display = 'none';
-    }
-});
-
-// Вход по Enter
-document.getElementById('passwordInput').addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') checkPassword();
-});
-
-// ============================================================================
 // КОНСТАНТЫ (из Delphi-кода)
 // ============================================================================
 const CA_PER_GH = 7.1446;
