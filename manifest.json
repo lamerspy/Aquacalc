@@ -2,51 +2,23 @@
   "name": "AquaCalc — Калькулятор параметров воды",
   "short_name": "AquaCalc",
   "description": "Калькулятор минерализации воды для аквариума",
-  "start_url": "./index.html?utm_source=pwa",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0284C7",
   "theme_color": "#0284C7",
   "orientation": "portrait",
-  "scope": "/",
-  "lang": "ru-RU",
-  "dir": "ltr",
-  "categories": ["utilities", "education", "lifestyle"],
   "icons": [
     {
-      "src": "img/icon-192.png",
-      "sizes": "192x192",
+      "src": "img/icon-256.png",
+      "sizes": "256x256",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "img/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
-  ],
-  "screenshots": [],
-  "prefer_related_applications": false,
-  "shortcuts": [
-    {
-      "name": "Новый расчёт",
-      "short_name": "Расчёт",
-      "description": "Начать новый расчёт минерализации",
-      "url": "./index.html?new=1",
-      "icons": [
-        {
-          "src": "img/icon-192.png",
-          "sizes": "192x192"
-        }
-      ]
-    }
-  ],
-  "share_target": {
-    "action": "./index.html",
-    "method": "GET",
-    "params": {
-      "title": "name",
-      "text": "description"
-    }
-  }
+  ]
 }
