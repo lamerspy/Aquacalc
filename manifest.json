@@ -2,11 +2,13 @@
   "name": "AquaCalc — Калькулятор параметров воды",
   "short_name": "AquaCalc",
   "description": "Калькулятор минерализации воды для аквариума",
-  "start_url": "./index.html",
+  "start_url": "./index.html?source=pwa",
   "display": "standalone",
   "background_color": "#0284C7",
   "theme_color": "#0284C7",
   "orientation": "portrait",
+  "scope": "/",
+  "lang": "ru",
   "icons": [
     {
       "src": "img/icon-256.png",
@@ -20,5 +22,7 @@
       "type": "image/png",
       "purpose": "any"
     }
-  ]
+  ],
+  "categories": ["utilities", "education"],
+  "prefer_related_applications": false
 }
