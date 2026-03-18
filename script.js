@@ -157,7 +157,7 @@ function calculate() {
     const totalTds = caPpm + mgPpm + naPpm + TARGET_K_PPM + hco3Ppm + so4Ppm + clPpm;
     const thCaco3 = gh * GH_TO_CACO3;
 
-    // Форматирование чисел (ТОЧКИ вместо запятых)
+    // Форматирование чисел
     const fmt = (num, decimals = 2) => num.toLocaleString('en-US', {
         minimumFractionDigits: decimals,
         maximumFractionDigits: decimals
@@ -480,7 +480,6 @@ document.addEventListener('DOMContentLoaded', () => {
     inputs.forEach(id => {
         const el = document.getElementById(id);
         el.addEventListener('input', calculate);
-        // УБРАНА замена точки на запятую - теперь только точки
     });
 
     document.getElementById('CaBox').addEventListener('change', calculate);
