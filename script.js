@@ -50,7 +50,7 @@ function calculate() {
     const kh = parseFloat(document.getElementById('editKH').value.replace(',', '.')) || 0;
     const volume = parseFloat(document.getElementById('editVolume').value.replace(',', '.')) || 0;
     let targetRatio = parseFloat(document.getElementById('Ca_Mg').value.replace(',', '.')) || 0;
-    if (targetRatio <= 0) targetRatio = 1.11;
+    if (targetRatio <= 0) targetRatio = 4;
 
     const caSaltIndex = parseInt(document.getElementById('CaBox').value);
     const mgSaltIndex = parseInt(document.getElementById('MgBox').value);
@@ -222,7 +222,7 @@ function loadSettings() {
     if (saved) {
         const settings = JSON.parse(saved);
         document.getElementById('editHardness').value = settings.gh || '6';
-        document.getElementById('editKH').value = settings.kh || '2.0';
+        document.getElementById('editKH').value = settings.kh || '2';
         document.getElementById('editVolume').value = settings.volume || '10';
         document.getElementById('Ca_Mg').value = settings.caMgRatio || '4';
         document.getElementById('CaBox').value = settings.caSalt || '0';
@@ -234,7 +234,7 @@ function loadSettings() {
 function resetSettings() {
     localStorage.removeItem('aquacalc_settings');
     document.getElementById('editHardness').value = '6';
-    document.getElementById('editKH').value = '2.0';
+    document.getElementById('editKH').value = '2';
     document.getElementById('editVolume').value = '10';
     document.getElementById('Ca_Mg').value = '4';
     document.getElementById('CaBox').value = '0';
