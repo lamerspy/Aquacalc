@@ -98,7 +98,7 @@ header h1 {
 }
 
 .input-with-unit input {
-    flex: 0 0 80px;
+    flex: 1;
     background: rgba(21, 94, 117, 0.95);
     border: 1px solid rgba(34, 211, 238, 0.4);
     border-radius: 5px;
