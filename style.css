@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: "Consolas", "Courier New", monospace;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
     color: #F0F9FF;
     line-height: 1.6;
@@ -24,7 +24,7 @@ body {
 header {
     text-align: center;
     padding: 30px 0;
-    margin-bottom: 0;
+    margin-bottom: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,18 +53,17 @@ header h1 {
     color: #BAE6FD;
     font-size: 1.1em;
     text-align: center;
-    margin-bottom: 0;
+    margin-bottom: 15px;
 }
 
 /* ========================================
-   LANGUAGE SWITCHER
+   🔥 LANGUAGE SWITCHER - ПОД ПОДЗАГОЛОВКОМ 🔥
    ======================================== */
 .language-switcher {
     display: flex;
     gap: 8px;
     justify-content: center;
-    margin-top: 30px;
-    margin-bottom: 25px;
+    margin-top: 10px;
 }
 
 .lang-btn {
@@ -79,7 +78,6 @@ header h1 {
     transition: all 0.3s ease;
     white-space: nowrap;
     text-transform: uppercase;
-    font-family: "Consolas", "Courier New", monospace;
 }
 
 .lang-btn:hover {
@@ -151,7 +149,7 @@ header h1 {
     padding: 6px 8px;
     color: #67E8F9;
     font-size: 0.9em;
-    font-family: "Consolas", "Courier New", monospace;
+    font-family: 'Consolas', monospace;
     min-width: 50px;
     height: 32px;
 }
@@ -167,7 +165,6 @@ header h1 {
     font-size: 0.8em;
     white-space: nowrap;
     min-width: 30px;
-    font-family: "Consolas", "Courier New", monospace;
 }
 
 /* ========================================
@@ -182,7 +179,6 @@ header h1 {
     font-size: 0.85em;
     cursor: pointer;
     height: 32px;
-    font-family: "Consolas", "Courier New", monospace;
 }
 
 .salt-group select:focus {
@@ -218,7 +214,7 @@ header h1 {
 
 .result-value {
     color: #67E8F9;
-    font-family: "Consolas", "Courier New", monospace;
+    font-family: 'Consolas', monospace;
     font-size: 1.1em;
     font-weight: bold;
 }
@@ -250,7 +246,7 @@ header h1 {
 
 .ion-value {
     color: #67E8F9;
-    font-family: "Consolas", "Courier New", monospace;
+    font-family: 'Consolas', monospace;
     font-size: 0.95em;
 }
 
@@ -288,7 +284,7 @@ header h1 {
 
 .summary-value {
     color: #67E8F9;
-    font-family: "Consolas", "Courier New", monospace;
+    font-family: 'Consolas', monospace;
     font-size: 1.5em;
     font-weight: bold;
 }
@@ -299,7 +295,7 @@ header h1 {
     border-radius: 6px;
     text-align: center;
     color: #7DD3FC;
-    font-family: "Consolas", "Courier New", monospace;
+    font-family: 'Consolas', monospace;
     border: 1px solid rgba(34, 211, 238, 0.25);
 }
 
@@ -322,7 +318,6 @@ header h1 {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-family: "Consolas", "Courier New", monospace;
 }
 
 .btn-primary {
@@ -363,7 +358,6 @@ footer {
     margin-top: 30px;
     color: rgba(255,255,255,0.7);
     border-top: 1px solid rgba(255,255,255,0.1);
-    font-family: "Consolas", "Courier New", monospace;
 }
 
 /* ========================================
@@ -391,7 +385,6 @@ footer {
     max-height: 80vh;
     overflow-y: auto;
     color: #F0F9FF;
-    font-family: "Consolas", "Courier New", monospace;
 }
 
 .close {
@@ -438,7 +431,6 @@ footer {
     color: #FCA5A5;
     font-size: 0.9em;
     line-height: 1.5;
-    font-family: "Consolas", "Courier New", monospace;
 }
 
 .disclaimer p {
@@ -474,7 +466,6 @@ footer {
     margin: 15px 0;
     font-size: 0.88em;
     line-height: 1.6;
-    font-family: "Consolas", "Courier New", monospace;
 }
 
 .license-text .copyright-header {
@@ -496,7 +487,7 @@ footer {
     margin-bottom: 15px;
     border-radius: 0 6px 6px 0;
     color: #67E8F9;
-    font-family: "Consolas", "Courier New", monospace;
+    font-family: 'Consolas', monospace;
     font-size: 0.95em;
 }
 
@@ -571,8 +562,7 @@ footer {
     }
     
     .language-switcher {
-        margin-top: 25px;
-        margin-bottom: 20px;
+        margin-top: 12px;
     }
     
     .lang-btn {
