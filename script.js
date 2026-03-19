@@ -87,7 +87,17 @@ const translations = {
         cacl2_anh: "CaCl₂ (безводный)",
         cacl2_2h2o: "CaCl₂·2H₂O (дигидрат)",
         mgso4_7h2o: "MgSO₄·7H₂O (эпсом)",
-        mgso4_anh: "MgSO₄ (безводный)"
+        mgso4_anh: "MgSO₄ (безводный)",
+        // Экспорт
+        export_title: "AquaCalc Log",
+        export_desired: "ЖЕЛАЕМЫЕ ПАРАМЕТРЫ",
+        export_dosage: "НЕОБХОДИМО ВНЕСТИ",
+        export_results: "РЕЗУЛЬТАТЫ РАСЧЁТА",
+        export_ions: "ИОННЫЙ СОСТАВ ВОДЫ",
+        export_gh: "Общая жёсткость (GH)",
+        export_kh: "Карбонатная жёсткость (KH)",
+        export_volume: "Объём воды",
+        export_ca_mg: "Соотношение Ca:Mg"
     },
     en: {
         subtitle: "Aquarium Water Remineralization Calculator",
@@ -136,7 +146,17 @@ const translations = {
         cacl2_anh: "CaCl₂ (anhydrous)",
         cacl2_2h2o: "CaCl₂·2H₂O (dihydrate)",
         mgso4_7h2o: "MgSO₄·7H₂O (epsom)",
-        mgso4_anh: "MgSO₄ (anhydrous)"
+        mgso4_anh: "MgSO₄ (anhydrous)",
+        // Export
+        export_title: "AquaCalc Log",
+        export_desired: "TARGET PARAMETERS",
+        export_dosage: "REQUIRED DOSAGE",
+        export_results: "CALCULATION RESULTS",
+        export_ions: "WATER ION COMPOSITION",
+        export_gh: "General Hardness (GH)",
+        export_kh: "Carbonate Hardness (KH)",
+        export_volume: "Water Volume",
+        export_ca_mg: "Ca:Mg Ratio"
     }
 };
 
@@ -161,7 +181,6 @@ function updateLanguageUI() {
         }
     });
     
-    // Обновление опций select для солей
     updateSaltOptions();
     
     document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -414,25 +433,18 @@ function resetSettings() {
 }
 
 // ============================================================================
-// ЭКСПОРТ В HTML (ОРИГИНАЛ)
+// ЭКСПОРТ В HTML (ОРИГИНАЛ + ЯЗЫК + Ca:Mg)
 // ============================================================================
 function exportToHtml() {
     const now = new Date().toLocaleString(currentLang === 'ru' ? 'ru-RU' : 'en-US');
     const getVal = (id) => document.getElementById(id).textContent;
-    
-    const titleReport = currentLang === 'ru' ? 'AquaCalc Log' : 'AquaCalc Report';
-    const labelDesired = currentLang === 'ru' ? 'ЖЕЛАЕМЫЕ ПАРАМЕТРЫ' : 'TARGET PARAMETERS';
-    const labelDosage = currentLang === 'ru' ? 'НЕОБХОДИМО ВНЕСТИ' : 'REQUIRED DOSAGE';
-    const labelResults = currentLang === 'ru' ? 'РЕЗУЛЬТАТЫ РАСЧЁТА' : 'CALCULATION RESULTS';
-    const labelIons = currentLang === 'ru' ? 'ИОННЫЙ СОСТАВ ВОДЫ' : 'WATER ION COMPOSITION';
-    const footerSlogan = currentLang === 'ru' ? 'Профессионализм в каждой капле.' : 'Professionalism in every drop.';
     
     const html = `<!DOCTYPE html>
 <html lang="${currentLang}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${titleReport}</title>
+    <title>${translations[currentLang].export_title}</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -558,21 +570,22 @@ function exportToHtml() {
 </head>
 <body>
     <div class="header">
-        <h1>🐟${titleReport}</h1>
+        <h1>🐟 ${translations[currentLang].export_title}</h1>
         <p>${now}</p>
     </div>
 
     <div class="section">
-        <h2>${labelDesired}</h2>
+        <h2>${translations[currentLang].export_desired}</h2>
         <table>
-            <tr><td>GH</td><td><span class="value-box">${document.getElementById('editHardness').value} °dGH</span></td></tr>
-            <tr><td>KH</td><td><span class="value-box">${document.getElementById('editKH').value} °dKH</span></td></tr>
-            <tr><td>${currentLang === 'ru' ? 'Объём' : 'Volume'}</td><td><span class="value-box">${document.getElementById('editVolume').value} ${currentLang === 'ru' ? 'л' : 'L'}</span></td></tr>
+            <tr><td>${translations[currentLang].export_gh}</td><td><span class="value-box">${document.getElementById('editHardness').value} °dGH</span></td></tr>
+            <tr><td>${translations[currentLang].export_kh}</td><td><span class="value-box">${document.getElementById('editKH').value} °dKH</span></td></tr>
+            <tr><td>${translations[currentLang].export_volume}</td><td><span class="value-box">${document.getElementById('editVolume').value} ${currentLang === 'ru' ? 'л' : 'L'}</span></td></tr>
+            <tr><td>${translations[currentLang].export_ca_mg}</td><td><span class="value-box">${document.getElementById('Ca_Mg').value} : 1</span></td></tr>
         </table>
     </div>
 
     <div class="section">
-        <h2>${labelDosage}</h2>
+        <h2>${translations[currentLang].export_dosage}</h2>
         <table>
             <tr><td>${getVal('saltCaName')}</td><td><span class="value-box">${getVal('lblCaValue')}</span></td></tr>
             <tr><td>${getVal('saltMgName')}</td><td><span class="value-box">${getVal('lblMgValue')}</span></td></tr>
@@ -582,7 +595,7 @@ function exportToHtml() {
     </div>
 
     <div class="section">
-        <h2>${labelResults}</h2>
+        <h2>${translations[currentLang].export_results}</h2>
         <div class="summary-grid">
             <div class="summary-card">
                 <div class="label">TDS</div>
@@ -600,7 +613,7 @@ function exportToHtml() {
     </div>
 
     <div class="section">
-        <h2>${labelIons}</h2>
+        <h2>${translations[currentLang].export_ions}</h2>
         <table>
             <tr><td>Ca²⁺</td><td>${getVal('Label3')}</td></tr>
             <tr><td>Mg²⁺</td><td>${getVal('Label10')}</td></tr>
@@ -614,7 +627,7 @@ function exportToHtml() {
 
     <div class="footer">
         <p>PlecoHobby © ${new Date().getFullYear()}</p>
-        <p>${footerSlogan}</p>
+        <p>${translations[currentLang].footer_slogan}</p>
     </div>
 </body>
 </html>`;
@@ -651,8 +664,8 @@ function setupModal() {
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('year').textContent = new Date().getFullYear();
     loadSettings();
-    loadLanguage();              // 🔥 ДОБАВЛЕНО: загрузка языка
-    initLanguageSwitcher();      // 🔥 ДОБАВЛЕНО: инициализация переключателей
+    loadLanguage();
+    initLanguageSwitcher();
     
     const inputs = ['editHardness', 'editKH', 'editVolume', 'Ca_Mg'];
     inputs.forEach(id => {
