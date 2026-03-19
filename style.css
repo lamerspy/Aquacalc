@@ -511,3 +511,15 @@ footer {
         width: 95%;
     }
 }
+/* ========================================
+   КНОПКА ПОДДЕРЖКИ
+   ======================================== */
+.btn-support {
+    background: linear-gradient(135deg, #EC4899 0%, #DC2626 100%);
+    color: #FFFFFF;
+}
+
+.btn-support:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
+}
