@@ -71,37 +71,43 @@
             <img src="img/logo.png" alt="AquaCalc Logo" class="site-logo">
             AquaCalc
         </h1>
-        <p class="subtitle">Калькулятор минерализации воды для аквариума</p>
+        <p class="subtitle" data-i18n="subtitle">Калькулятор минерализации воды для аквариума</p>
+        
+        <!-- 🔥 ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА - ПОД ПОДЗАГОЛОВКОМ 🔥 -->
+        <div class="language-switcher">
+            <button class="lang-btn active" data-lang="ru">RU</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+        </div>
     </header>
 
     <main>
         <!-- Ввод параметров -->
         <section class="card input-section">
-            <h2>Желаемые параметры</h2>
+            <h2 data-i18n="desired_params">Желаемые параметры</h2>
             <div class="input-grid">
                 <div class="input-group">
-                    <label for="editHardness">Общая жёсткость (GH)</label>
+                    <label for="editHardness" data-i18n="gh_label">Общая жёсткость (GH)</label>
                     <div class="input-with-unit">
                         <input type="text" id="editHardness" value="6" pattern="[0-9.,]*">
                         <span class="unit-inline">°dGH</span>
                     </div>
                 </div>
                 <div class="input-group">
-                    <label for="editKH">Карбонатная жёсткость (KH)</label>
+                    <label for="editKH" data-i18n="kh_label">Карбонатная жёсткость (KH)</label>
                     <div class="input-with-unit">
                         <input type="text" id="editKH" value="2.0" pattern="[0-9.,]*">
                         <span class="unit-inline">°dKH</span>
                     </div>
                 </div>
                 <div class="input-group">
-                    <label for="editVolume">Объём воды</label>
+                    <label for="editVolume" data-i18n="volume_label">Объём воды</label>
                     <div class="input-with-unit">
                         <input type="text" id="editVolume" value="10" pattern="[0-9.,]*">
-                        <span class="unit-inline">л</span>
+                        <span class="unit-inline" data-i18n="liters">л</span>
                     </div>
                 </div>
                 <div class="input-group">
-                    <label for="Ca_Mg">Соотношение Ca:Mg</label>
+                    <label for="Ca_Mg" data-i18n="ca_mg_ratio">Соотношение Ca:Mg</label>
                     <div class="input-with-unit">
                         <input type="text" id="Ca_Mg" value="4" pattern="[0-9.,]*">
                         <span class="unit-inline">: 1</span>
@@ -112,27 +118,27 @@
 
         <!-- Выбор солей -->
         <section class="card salts-section">
-            <h2>Выбор препаратов</h2>
+            <h2 data-i18n="salt_selection">Выбор препаратов</h2>
             <div class="salts-grid">
                 <div class="salt-group">
-                    <label for="CaBox">Источник кальция</label>
+                    <label for="CaBox" data-i18n="calcium_source">Источник кальция</label>
                     <select id="CaBox">
-                        <option value="0">CaSO₄·2H₂O (гипс)</option>
-                        <option value="1">CaCl₂ (безводный)</option>
-                        <option value="2">CaCl₂·2H₂O (дигидрат)</option>
+                        <option value="0" data-i18n="caso4">CaSO₄·2H₂O (гипс)</option>
+                        <option value="1" data-i18n="cacl2_anh">CaCl₂ (безводный)</option>
+                        <option value="2" data-i18n="cacl2_2h2o">CaCl₂·2H₂O (дигидрат)</option>
                         <option value="3">CaCl₂·6H₂O</option>
                     </select>
                 </div>
                 <div class="salt-group">
-                    <label for="MgBox">Источник магния</label>
+                    <label for="MgBox" data-i18n="magnesium_source">Источник магния</label>
                     <select id="MgBox">
-                        <option value="0">MgSO₄·7H₂O (эпсом)</option>
-                        <option value="1">MgSO₄ (безводный)</option>
+                        <option value="0" data-i18n="mgso4_7h2o">MgSO₄·7H₂O (эпсом)</option>
+                        <option value="1" data-i18n="mgso4_anh">MgSO₄ (безводный)</option>
                         <option value="2">MgCl₂·6H₂O</option>
                     </select>
                 </div>
                 <div class="salt-group">
-                    <label for="KBox">Источник калия</label>
+                    <label for="KBox" data-i18n="potassium_source">Источник калия</label>
                     <select id="KBox">
                         <option value="0">K₂SO₄</option>
                         <option value="1">KCl</option>
@@ -144,7 +150,7 @@
 
         <!-- Результаты -->
         <section class="card results-section">
-            <h2>Необходимо внести</h2>
+            <h2 data-i18n="add_dosage">Необходимо внести</h2>
             <div class="results-grid">
                 <div class="result-item">
                     <span class="result-label" id="saltCaName">CaSO₄·2H₂O</span>
@@ -167,7 +173,7 @@
 
         <!-- Ионный состав -->
         <section class="card ion-section">
-            <h2>Ионный состав воды</h2>
+            <h2 data-i18n="ion_composition">Ионный состав воды</h2>
             <div class="ion-grid">
                 <div class="ion-item">
                     <span class="ion-name">Ca²⁺</span>
@@ -202,7 +208,7 @@
 
         <!-- Сводка -->
         <section class="card summary-section">
-            <h2>Сводка</h2>
+            <h2 data-i18n="summary">Сводка</h2>
             <div class="summary-grid">
                 <div class="summary-card">
                     <div class="summary-label">TDS</div>
@@ -224,14 +230,14 @@
 
         <!-- Кнопки действий -->
         <section class="actions-section">
-            <button id="btnExport" class="btn btn-primary">📥 Скачать отчёт (HTML)</button>
-            <button id="btnReset" class="btn btn-secondary">🔄 Сбросить</button>
-            <button id="btnAbout" class="btn btn-info">ℹ️ Справка</button>
+            <button id="btnExport" class="btn btn-primary">📥 <span data-i18n="export_report">Скачать отчёт (HTML)</span></button>
+            <button id="btnReset" class="btn btn-secondary">🔄 <span data-i18n="reset">Сбросить</span></button>
+            <button id="btnAbout" class="btn btn-info">ℹ️ <span data-i18n="help">Справка</span></button>
         </section>
     </main>
 
     <footer>
-        <p>PlecoHobby © <span id="year"></span> | Профессионализм в каждой капле.</p>
+        <p>PlecoHobby © <span id="year"></span> | <span data-i18n="footer_slogan">Профессионализм в каждой капле.</span></p>
     </footer>
 </div>
 
@@ -239,54 +245,54 @@
 <div id="aboutModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <h2>⚠️ ВАЖНОЕ УВЕДОМЛЕНИЕ</h2>
+        <h2 data-i18n="important_notice">⚠️ ВАЖНОЕ УВЕДОМЛЕНИЕ</h2>
         
         <div class="disclaimer">
-            <p>⚠️ <strong>ВАЖНОЕ УВЕДОМЛЕНИЕ</strong></p>
-            <p>Данный калькулятор предоставлен исключительно в ознакомительных целях.</p>
-            <p>Мы не несём ответственности за любые последствия, возникшие в результате использования полученных данных, включая вред здоровью рыб, повреждение оборудования или иные убытки.</p>
-            <p>Перед применением любых препаратов рекомендуется:</p>
+            <p>⚠️ <strong data-i18n="important_notice">ВАЖНОЕ УВЕДОМЛЕНИЕ</strong></p>
+            <p data-i18n="disclaimer_p1">Данный калькулятор предоставлен исключительно в ознакомительных целях.</p>
+            <p data-i18n="disclaimer_p2">Мы не несём ответственности за любые последствия, возникшие в результате использования полученных данных, включая вред здоровью рыб, повреждение оборудования или иные убытки.</p>
+            <p data-i18n="disclaimer_p3">Перед применением любых препаратов рекомендуется:</p>
             <ul>
-                <li>Проверить расчёты независимым источником.</li>
-                <li>Начинать с меньших дозировок.</li>
-                <li>Контролировать параметры воды тестами.</li>
-                <li>Наблюдать за состоянием рыб.</li>
+                <li data-i18n="disclaimer_li1">Проверить расчёты независимым источником.</li>
+                <li data-i18n="disclaimer_li2">Начинать с меньших дозировок.</li>
+                <li data-i18n="disclaimer_li3">Контролировать параметры воды тестами.</li>
+                <li data-i18n="disclaimer_li4">Наблюдать за состоянием рыб.</li>
             </ul>
-            <p><strong>Используя этот калькулятор, вы принимаете на себя полную ответственность за все действия и их последствия.</strong></p>
+            <p><strong data-i18n="disclaimer_final">Используя этот калькулятор, вы принимаете на себя полную ответственность за все действия и их последствия.</strong></p>
         </div>
 
         <div class="modal-body">
-            <h3>📄 Лицензия</h3>
+            <h3 data-i18n="license">📄 Лицензия</h3>
             <div class="license-text">
                 <div class="copyright-header">📜 LICENSE</div>
                 <div class="copyright-notice">Copyright (c) 2024-2025 PlecoHobby. All Rights Reserved.</div>
                 
-                <p><strong>1. ЗАПРЕЩЕНО:</strong></p>
+                <p><strong data-i18n="prohibited">1. ЗАПРЕЩЕНО:</strong></p>
                 <ul>
-                    <li>Копирование, распространение или использование кода в коммерческих целях без письменного разрешения.</li>
-                    <li>Изменение, модификация или создание производных продуктов.</li>
-                    <li>Продажа, sublicensing или передача прав третьим лицам.</li>
+                    <li data-i18n="prohibited_li1">Копирование, распространение или использование кода в коммерческих целях без письменного разрешения.</li>
+                    <li data-i18n="prohibited_li2">Изменение, модификация или создание производных продуктов.</li>
+                    <li data-i18n="prohibited_li3">Продажа, sublicensing или передача прав третьим лицам.</li>
                 </ul>
                 
-                <p><strong>2. РАЗРЕШЕНО:</strong></p>
+                <p><strong data-i18n="permitted">2. РАЗРЕШЕНО:</strong></p>
                 <ul>
-                    <li>Личное использование (некоммерческое).</li>
-                    <li>Просмотр кода в ознакомительных целях.</li>
+                    <li data-i18n="permitted_li1">Личное использование (некоммерческое).</li>
+                    <li data-i18n="permitted_li2">Просмотр кода в ознакомительных целях.</li>
                 </ul>
                 
-                <p><strong>3. КОММЕРЧЕСКОЕ ИСПОЛЬЗОВАНИЕ:</strong></p>
+                <p><strong data-i18n="commercial">3. КОММЕРЧЕСКОЕ ИСПОЛЬЗОВАНИЕ:</strong></p>
                 <ul>
-                    <li>Доступно только после приобретения лицензии.</li>
-                    <li>Для покупки обращайтесь: plecohobby@gmail.com</li>
+                    <li data-i18n="commercial_li1">Доступно только после приобретения лицензии.</li>
+                    <li data-i18n="commercial_li2">Для покупки обращайтесь: plecohobby@gmail.com</li>
                 </ul>
                 
-                <p><strong>4. ОТВЕТСТВЕННОСТЬ:</strong></p>
+                <p><strong data-i18n="responsibility">4. ОТВЕТСТВЕННОСТЬ:</strong></p>
                 <ul>
-                    <li>Программа предоставляется "КАК ЕСТЬ".</li>
-                    <li>Авторы не несут ответственности за убытки.</li>
+                    <li data-i18n="responsibility_li1">Программа предоставляется "КАК ЕСТЬ".</li>
+                    <li data-i18n="responsibility_li2">Авторы не несут ответственности за убытки.</li>
                 </ul>
                 
-                <p class="warning-final">⚠️ Нарушение данной лицензии влечёт юридическую ответственность.</p>
+                <p class="warning-final">⚠️ <span data-i18n="violation">Нарушение данной лицензии влечёт юридическую ответственность.</span></p>
             </div>
         </div>
     </div>
