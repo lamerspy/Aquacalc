@@ -298,7 +298,7 @@ function exportToHtml() {
 }
 
 // ============================================================================
-// МОДАЛЬНОЕ ОКНО
+// МОДАЛЬНОЕ ОКНО (СПРАВКА)
 // ============================================================================
 function setupModal() {
     const modal = document.getElementById('aboutModal');
@@ -308,6 +308,32 @@ function setupModal() {
     close.addEventListener('click', () => modal.style.display = 'none');
     window.addEventListener('click', (e) => {
         if (e.target === modal) modal.style.display = 'none';
+    });
+}
+
+// ============================================================================
+// МОДАЛЬНОЕ ОКНО (ПОДДЕРЖКА)
+// ============================================================================
+function setupSupportModal() {
+    const modal = document.getElementById('supportModal');
+    const btn = document.getElementById('btnSupport');
+    const close = modal.querySelector('.close');
+    btn.addEventListener('click', () => modal.style.display = 'block');
+    close.addEventListener('click', () => modal.style.display = 'none');
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) modal.style.display = 'none';
+    });
+}
+
+// ============================================================================
+// КОПИРОВАНИЕ КОШЕЛЬКОВ
+// ============================================================================
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        alert('✅ Адрес скопирован в буфер обмена!\n\n' + text);
+    }).catch(err => {
+        console.error('Ошибка копирования: ', err);
+        alert('❌ Не удалось скопировать. Попробуйте вручную.');
     });
 }
 
@@ -328,5 +354,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnExport').addEventListener('click', exportToHtml);
     document.getElementById('btnReset').addEventListener('click', resetSettings);
     setupModal();
+    setupSupportModal();
     calculate();
 });
