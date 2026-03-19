@@ -24,7 +24,7 @@ body {
 header {
     text-align: center;
     padding: 30px 0;
-    margin-bottom: 30px;
+    margin-bottom: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,17 +53,18 @@ header h1 {
     color: #BAE6FD;
     font-size: 1.1em;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 0;
 }
 
 /* ========================================
-   🔥 LANGUAGE SWITCHER - ПОД ПОДЗАГОЛОВКОМ 🔥
+   🔥 LANGUAGE SWITCHER - ОПУЩЕН ЕЩЁ НИЖЕ 🔥
    ======================================== */
 .language-switcher {
     display: flex;
     gap: 8px;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 30px;
+    margin-bottom: 25px;
 }
 
 .lang-btn {
@@ -562,7 +563,8 @@ footer {
     }
     
     .language-switcher {
-        margin-top: 12px;
+        margin-top: 25px;
+        margin-bottom: 20px;
     }
     
     .lang-btn {
