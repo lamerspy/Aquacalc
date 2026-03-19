@@ -523,7 +523,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(() => {
         // Показываем уведомление
-        alert('Адрес скопирован в буфер обмена!');
+        alert('✅ Адрес скопирован в буфер обмена!\n\n' + text);
     }).catch(err => {
         // Если не получилось
         console.error('Ошибка копирования: ', err);
