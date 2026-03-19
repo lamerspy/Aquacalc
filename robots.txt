@@ -1,0 +1,6 @@
+# Robots.txt for AquaCalc
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://lamerspy.github.io/Aquacalc/sitemap.xml
