@@ -97,7 +97,24 @@ const translations = {
         export_gh: "Общая жёсткость (GH)",
         export_kh: "Карбонатная жёсткость (KH)",
         export_volume: "Объём воды",
-        export_ca_mg: "Соотношение Ca:Mg"
+        export_ca_mg: "Соотношение Ca:Mg",
+        // 🔥 Справка - ДОБАВЛЕНО
+        help_title: "📖 Справка",
+        help_can_change: "Что можно изменять:",
+        help_cannot_change: "Что нельзя изменять:",
+        
+        help_export: "Результат экспорта:",
+        help_calcium: "<strong>Кальций (Ca²⁺)</strong> — выбирайте источник кальция из списка (гипс, CaCl₂ и др.)",
+        help_magnesium: "<strong>Магний (Mg²⁺)</strong> — выбирайте источник магния (эпсом, MgSO₄ и др.)",
+        help_potassium: "<strong>Калий (K⁺)</strong> — выбирайте источник калия (K₂SO₄, KCl, K₂CO₃)",
+        help_ratio: "<strong>Соотношение Ca:Mg</strong> — настройте пропорцию кальция к магнию (по умолчанию 4:1)",
+        help_gh_kh: "<strong>GH, KH, Объём</strong> — укажите целевые параметры воды.",
+        help_sodium: "<strong>Натрий (Na⁺)</strong> — рассчитывается автоматически из KH (через NaHCO₃)",
+        help_potassium_fixed: "<strong>Калий (K⁺)</strong> — зафиксирован на уровне <strong>3.0 мг/л</strong> (оптимально для рыб)",
+        help_export_1: "Нажмите \"Скачать отчёт (HTML)\" для сохранения рецепта.",
+        help_export_2: "Отчёт содержит все параметры и дозировки солей.",
+        help_export_3: "Можно открыть в любом браузере или распечатать.",
+        help_note: "⚠️ Все расчёты приблизительные — всегда проверяйте параметры тестами!"
     },
     en: {
         subtitle: "Aquarium Water Remineralization Calculator",
@@ -156,7 +173,23 @@ const translations = {
         export_gh: "General Hardness (GH)",
         export_kh: "Carbonate Hardness (KH)",
         export_volume: "Water Volume",
-        export_ca_mg: "Ca:Mg Ratio"
+        export_ca_mg: "Ca:Mg Ratio",
+        // 🔥 Help - ADDED
+        help_title: "📖 Help",
+        help_can_change: "What You Can Change:",
+        help_cannot_change: "What Cannot Be Changed:",
+        help_export: "Export Result:",
+        help_calcium: "<strong>Calcium (Ca²⁺)</strong> — select calcium source from the list (gypsum, CaCl₂, etc.)",
+        help_magnesium: "<strong>Magnesium (Mg²⁺)</strong> — select magnesium source (epsom, MgSO₄, etc.)",
+        help_potassium: "<strong>Potassium (K⁺)</strong> — select potassium source (K₂SO₄, KCl, K₂CO₃)",
+        help_ratio: "<strong>Ca:Mg Ratio</strong> — adjust calcium to magnesium ratio (default 4:1)",
+        help_gh_kh: "<strong>GH, KH, Volume</strong> — set target water parameters.",
+        help_sodium: "<strong>Sodium (Na⁺)</strong> — calculated automatically from KH (via NaHCO₃)",
+        help_potassium_fixed: "<strong>Potassium (K⁺)</strong> — fixed at <strong>3.0 mg/L</strong> (optimal for fish)",
+        help_export_1: "Click \"Download Report (HTML)\" to save your recipe.",
+        help_export_2: "Report contains all parameters and salt dosages.",
+        help_export_3: "Can be opened in any browser or printed.",
+        help_note: "⚠️ All calculations are approximate — always verify parameters with tests!" 
     }
 };
 
@@ -177,7 +210,11 @@ function updateLanguageUI() {
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (translations[currentLang][key]) {
-            el.textContent = translations[currentLang][key];
+            if (key.startsWith('help_')) {
+                el.innerHTML = translations[currentLang][key];
+            } else {
+                el.textContent = translations[currentLang][key];
+            }
         }
     });
     
@@ -494,36 +531,33 @@ function exportToHtml() {
             width: 100%;
             border-collapse: collapse;
         }
-        th {
-            background: rgba(21, 94, 117, 0.9);
-            color: #67E8F9 !important;
-            padding: 10px 7px;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.85em;
-            border: 1px solid rgba(34, 211, 238, 0.2);
+        tr {
+            border-bottom: 1px solid rgba(34, 211, 238, 0.15);
+        }
+        tr:last-child {
+            border-bottom: none;
         }
         td {
             padding: 10px 7px;
-            border-bottom: 1px solid rgba(34, 211, 238, 0.15);
             color: #E0F2FE !important;
         }
         td:first-child {
             font-weight: 600;
             color: #7DD3FC !important;
+            width: 60%;
         }
         td:last-child {
             text-align: right;
         }
         .value-box {
-            background: linear-gradient(135deg, rgba(21, 94, 117, 0.95) 0%, rgba(15, 52, 96, 0.95) 100%);
+            background: rgba(21, 94, 117, 0.95);
             padding: 6px 12px;
             border-radius: 6px;
             border: 1px solid rgba(34, 211, 238, 0.4);
             display: inline-block;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
             color: #67E8F9 !important;
             font-weight: bold;
+            min-width: 80px;
         }
         .summary-grid {
             display: grid;
@@ -559,12 +593,11 @@ function exportToHtml() {
             padding-top: 16px;
             border-top: 1px solid rgba(34, 211, 238, 0.3);
             color: #7DD3FC !important;
-            font-size: 0.9em;
+            font-size: 0.85em;
         }
         @media (max-width: 600px) {
-            .summary-grid { grid-template-columns: 1fr; }
-            td, th { padding: 7px 5px; font-size: 0.9em; }
             body { padding: 10px; }
+            td, th { padding: 7px 5px; font-size: 0.9em; }
         }
     </style>
 </head>
