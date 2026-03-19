@@ -239,59 +239,90 @@
 <div id="aboutModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <h2>⚠️ ВАЖНОЕ УВЕДОМЛЕНИЕ</h2>
+        <h2 data-i18n="important_notice">⚠️ ВАЖНОЕ УВЕДОМЛЕНИЕ</h2>
         
         <div class="disclaimer">
-            <p>⚠️ <strong>ВАЖНОЕ УВЕДОМЛЕНИЕ</strong></p>
-            <p>Данный калькулятор предоставлен исключительно в ознакомительных целях.</p>
-            <p>Мы не несём ответственности за любые последствия, возникшие в результате использования полученных данных, включая вред здоровью рыб, повреждение оборудования или иные убытки.</p>
-            <p>Перед применением любых препаратов рекомендуется:</p>
+            <p>⚠️ <strong data-i18n="important_notice">ВАЖНОЕ УВЕДОМЛЕНИЕ</strong></p>
+            <p data-i18n="disclaimer_p1">Данный калькулятор предоставлен исключительно в ознакомительных целях.</p>
+            <p data-i18n="disclaimer_p2">Мы не несём ответственности за любые последствия, возникшие в результате использования полученных данных, включая вред здоровью рыб, повреждение оборудования или иные убытки.</p>
+            <p data-i18n="disclaimer_p3">Перед применением любых препаратов рекомендуется:</p>
             <ul>
-                <li>Проверить расчёты независимым источником.</li>
-                <li>Начинать с меньших дозировок.</li>
-                <li>Контролировать параметры воды тестами.</li>
-                <li>Наблюдать за состоянием рыб.</li>
+                <li data-i18n="disclaimer_li1">Проверить расчёты независимым источником.</li>
+                <li data-i18n="disclaimer_li2">Начинать с меньших дозировок.</li>
+                <li data-i18n="disclaimer_li3">Контролировать параметры воды тестами.</li>
+                <li data-i18n="disclaimer_li4">Наблюдать за состоянием рыб.</li>
             </ul>
-            <p><strong>Используя этот калькулятор, вы принимаете на себя полную ответственность за все действия и их последствия.</strong></p>
+            <p><strong data-i18n="disclaimer_final">Используя этот калькулятор, вы принимаете на себя полную ответственность за все действия и их последствия.</strong></p>
         </div>
 
         <div class="modal-body">
-            <h3>📄 Лицензия</h3>
+            <h3 data-i18n="license">📄 Лицензия</h3>
             <div class="license-text">
                 <div class="copyright-header">📜 LICENSE</div>
                 <div class="copyright-notice">Copyright (c) 2024-2025 PlecoHobby. All Rights Reserved.</div>
                 
-                <p><strong>1. ЗАПРЕЩЕНО:</strong></p>
+                <p><strong data-i18n="prohibited">1. ЗАПРЕЩЕНО:</strong></p>
                 <ul>
-                    <li>Копирование, распространение или использование кода в коммерческих целях без письменного разрешения.</li>
-                    <li>Изменение, модификация или создание производных продуктов.</li>
-                    <li>Продажа, sublicensing или передача прав третьим лицам.</li>
+                    <li data-i18n="prohibited_li1">Копирование, распространение или использование кода в коммерческих целях без письменного разрешения.</li>
+                    <li data-i18n="prohibited_li2">Изменение, модификация или создание производных продуктов.</li>
+                    <li data-i18n="prohibited_li3">Продажа, sublicensing или передача прав третьим лицам.</li>
                 </ul>
                 
-                <p><strong>2. РАЗРЕШЕНО:</strong></p>
+                <p><strong data-i18n="permitted">2. РАЗРЕШЕНО:</strong></p>
                 <ul>
-                    <li>Личное использование (некоммерческое).</li>
-                    <li>Просмотр кода в ознакомительных целях.</li>
+                    <li data-i18n="permitted_li1">Личное использование (некоммерческое).</li>
+                    <li data-i18n="permitted_li2">Просмотр кода в ознакомительных целях.</li>
                 </ul>
                 
-                <p><strong>3. КОММЕРЧЕСКОЕ ИСПОЛЬЗОВАНИЕ:</strong></p>
+                <p><strong data-i18n="commercial">3. КОММЕРЧЕСКОЕ ИСПОЛЬЗОВАНИЕ:</strong></p>
                 <ul>
-                    <li>Доступно только после приобретения лицензии.</li>
-                    <li>Для покупки обращайтесь: plecohobby@gmail.com</li>
+                    <li data-i18n="commercial_li1">Доступно только после приобретения лицензии.</li>
+                    <li data-i18n="commercial_li2">Для покупки обращайтесь: plecohobby@gmail.com</li>
                 </ul>
                 
-                <p><strong>4. ОТВЕТСТВЕННОСТЬ:</strong></p>
+                <p><strong data-i18n="responsibility">4. ОТВЕТСТВЕННОСТЬ:</strong></p>
                 <ul>
-                    <li>Программа предоставляется "КАК ЕСТЬ".</li>
-                    <li>Авторы не несут ответственности за убытки.</li>
+                    <li data-i18n="responsibility_li1">Программа предоставляется "КАК ЕСТЬ".</li>
+                    <li data-i18n="responsibility_li2">Авторы не несут ответственности за убытки.</li>
                 </ul>
                 
-                <p class="warning-final">⚠️ Нарушение данной лицензии влечёт юридическую ответственность.</p>
+                <p class="warning-final">⚠️ <span data-i18n="violation">Нарушение данной лицензии влечёт юридическую ответственность.</span></p>
+            </div>
+        </div>
+
+        <!-- 🔥 СПРАВКА — В СТИЛЕ ЛИЦЕНЗИИ 🔥 -->
+        <div class="modal-body">
+            <h3 data-i18n="help_title">📖 Справка</h3>
+            <div class="help-text">
+                <div class="copyright-header">📖 HELP</div>
+                
+                <p><strong data-i18n="help_can_change">1. Что можно изменять:</strong></p>
+                <ul>
+                    <li data-i18n="help_calcium"><strong>Кальций (Ca²⁺)</strong> — выбирайте источник кальция из списка (гипс, CaCl₂ и др.)</li>
+                    <li data-i18n="help_magnesium"><strong>Магний (Mg²⁺)</strong> — выбирайте источник магния (эпсом, MgSO₄ и др.)</li>
+                    <li data-i18n="help_potassium"><strong>Калий (K⁺)</strong> — выбирайте источник калия (K₂SO₄, KCl, K₂CO₃)</li>
+                    <li data-i18n="help_ratio"><strong>Соотношение Ca:Mg</strong> — настройте пропорцию кальция к магнию (по умолчанию 4:1)</li>
+                    <li data-i18n="help_gh_kh"><strong>GH, KH, Объём</strong> — укажите целевые параметры воды</li>
+                </ul>
+
+                <p><strong data-i18n="help_cannot_change">2. Что нельзя изменять:</strong></p>
+                <ul>
+                    <li data-i18n="help_sodium"><strong>Натрий (Na⁺)</strong> — рассчитывается автоматически из KH (через NaHCO₃)</li>
+                    <li data-i18n="help_potassium_fixed"><strong>Калий (K⁺)</strong> — зафиксирован на уровне <strong>3.0 мг/л</strong> (оптимально для рыб)</li>
+                </ul>
+
+                <p><strong data-i18n="help_export">3. Результат экспорта:</strong></p>
+                <ul>
+                    <li data-i18n="help_export_1">Нажмите "Скачать отчёт (HTML)" для сохранения рецепта</li>
+                    <li data-i18n="help_export_2">Отчёт содержит все параметры и дозировки солей</li>
+                    <li data-i18n="help_export_3">Можно открыть в любом браузере или распечатать</li>
+                </ul>
+
+                <p class="warning-final" data-i18n="help_note">⚠️ Все расчёты приблизительные — всегда проверяйте параметры тестами!</p>
             </div>
         </div>
     </div>
 </div>
-
 <script src="script.js"></script>
 </body>
 </html>
