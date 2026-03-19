@@ -492,3 +492,28 @@ document.addEventListener('DOMContentLoaded', () => {
     setupModal();
     calculate();
 });
+// ============================================================================
+// МОДАЛЬНОЕ ОКНО ПОДДЕРЖКИ
+// ============================================================================
+function setupSupportModal() {
+    const modal = document.getElementById('supportModal');
+    const btn = document.getElementById('btnSupport');
+    const close = modal.querySelector('.close');
+    
+    btn.addEventListener('click', () => modal.style.display = 'block');
+    close.addEventListener('click', () => modal.style.display = 'none');
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) modal.style.display = 'none';
+    });
+}
+
+// ============================================================================
+// ИНИЦИАЛИЗАЦИЯ
+// ============================================================================
+document.addEventListener('DOMContentLoaded', () => {
+    // ... существующий код ...
+    
+    setupSupportModal();  // ← ДОБАВИТЬ
+    setupModal();
+    calculate();
+});
