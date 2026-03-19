@@ -642,3 +642,46 @@ footer {
         width: 95%;
     }
 }
+/* ========================================
+   🔥 КОШЕЛЬКИ - КЛИКАБЕЛЬНЫЕ 🔥
+   ======================================== */
+.wallet-address {
+    color: #67E8F9 !important;
+    background: rgba(34, 211, 238, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px dashed rgba(34, 211, 238, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    word-break: break-all;
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 0.85em;
+}
+
+.wallet-address:hover {
+    background: rgba(34, 211, 238, 0.2);
+    border-color: #22D3EE;
+    color: #FFFFFF !important;
+}
+
+.wallet-address:active {
+    transform: scale(0.98);
+}
+
+/* Ссылки в модальном окне */
+.license-text a, .modal-body a {
+    color: #22D3EE !important;
+    text-decoration: none;
+    border-bottom: 2px solid rgba(34, 211, 238, 0.5);
+    padding: 2px 4px;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.license-text a:hover, .modal-body a:hover {
+    color: #FFFFFF !important;
+    background: rgba(34, 211, 238, 0.3);
+    border-bottom-color: #22D3EE;
+}
