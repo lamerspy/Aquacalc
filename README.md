@@ -1,6 +1,6 @@
 # 🐟 AquaCalc — Калькулятор параметров воды
 
-**Aquarium Water Calculator | Калькулятор минерализации воды для аквариума**
+**Aquarium Water Calculator | Калькулятор реминерализации воды для аквариума**
 
 Инструмент для точного расчёта дозировок солей при подготовке воды для аквариума. Помогает достичь целевых параметров GH, KH, TDS и ионного состава.
 
@@ -33,7 +33,7 @@ Tool for precise calculation of salt dosages for aquarium water preparation. Hel
 
 - **Подготовка воды для аквариума** / Aquarium water preparation
 - **Корректировка параметров воды** / Water parameter adjustment
-- **Расчёт минерализации после осмоса** / Remineralization after RO
+- **Расчёт реминерализации после осмоса** / Remineralization after RO
 - **Подбор соотношения Ca:Mg** / Ca:Mg ratio adjustment
 - **Контроль ионного баланса** / Ion balance control
 
