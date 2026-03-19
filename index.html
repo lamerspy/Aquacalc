@@ -223,11 +223,12 @@
         </section>
 
         <!-- Кнопки действий -->
-        <section class="actions-section">
-            <button id="btnExport" class="btn btn-primary">📥 Скачать отчёт (HTML)</button>
-            <button id="btnReset" class="btn btn-secondary">🔄 Сбросить</button>
-            <button id="btnAbout" class="btn btn-info">ℹ️ Справка</button>
-        </section>
+    <section class="actions-section">
+    <button id="btnExport" class="btn btn-primary">📥 <span data-i18n="export_report">Скачать отчёт (HTML)</span></button>
+    <button id="btnReset" class="btn btn-secondary">🔄 <span data-i18n="reset">Сбросить</span></button>
+    <button id="btnAbout" class="btn btn-info">ℹ️ <span data-i18n="help">Справка</span></button>
+    <button id="btnSupport" class="btn btn-support">💖 <span data-i18n="support_project">Поддержать проект</span></button>    
+    </section>
     </main>
 
     <footer>
@@ -322,6 +323,41 @@
         <p class="warning-final" data-i18n="help_note">⚠️ Цифры в калькуляторе ≠ параметры в воде; всегда перепроверяйте тестами.</p>
     </div>
 </div>
+    </div>
+</div>
+    <!-- Модальное окно поддержки -->
+<div id="supportModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 data-i18n="support_title">💖 Поддержать проект</h2>
+        
+        <div class="modal-body">
+            <div class="license-text">
+                <div class="copyright-header">💳 SUPPORT AQUACALC</div>
+                <div class="copyright-notice">AquaCalc — бесплатный калькулятор для аквариумистов</div>
+                
+                <p><strong data-i18n="support_intro">Привет!</strong></p>
+                <p data-i18n="support_text1">Этот калькулятор создан энтузиастами для аквариумистов. Мы делаем его бесплатным и доступным для всех.</p>
+                <p data-i18n="support_text2">Если проект оказался полезным для вас, вы можете поддержать его развитие:</p>
+                
+                <p><strong data-i18n="support_ways">Способы поддержки:</strong></p>
+                <ul>
+                    <li data-i18n="support_way1"><strong>💰 Финансово</strong> — любая сумма поможет оплатить хостинг и домен</li>
+                    <li data-i18n="support_way2"><strong>📢 Рассказать друзьям</strong> — поделитесь ссылкой с другими аквариумистами</li>
+                    <li data-i18n="support_way3"><strong>⭐ Оставить отзыв</strong> — ваш фидбек помогает улучшать калькулятор</li>
+                    <li data-i18n="support_way4"><strong>🐛 Сообщить об ошибке</strong> — помогите сделать проект лучше</li>
+                </ul>
+                
+                <p><strong data-i18n="support_contact">Контакты для поддержки:</strong></p>
+                <ul>
+                    <li>📧 Email: <strong>plecohobby@gmail.com</strong></li>
+                    <li>💳 Crypto: <strong>[ваш кошелёк]</strong></li>
+                    <li>🔗 GitHub: <strong>lamerspy/Aquacalc</strong></li>
+                </ul>
+                
+                <p class="warning-final" data-i18n="support_thanks">⚠️ Спасибо за вашу поддержку! Вместе мы сделаем проект лучше.</p>
+            </div>
+        </div>
     </div>
 </div>
 <script src="script.js"></script>
