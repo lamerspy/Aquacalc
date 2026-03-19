@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Consolas", "Courier New", monospace;
     background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
     color: #F0F9FF;
     line-height: 1.6;
