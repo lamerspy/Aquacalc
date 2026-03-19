@@ -3,24 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Калькулятор минерализации воды для аквариума — расчёт дозировок Ca, Mg, Na, K для L-сомов и других видов.">
+    
+    <!-- 🔥 SEO META TAGS 🔥 -->
+    <meta name="description" content="Калькулятор минерализации воды для аквариума — расчёт дозировок Ca, Mg, Na, K для L-сомов и других видов. Aquarium water calculator for remineralization, GH, KH, TDS.">
+    <meta name="keywords" content="aquarium water calculator, аквариумный калькулятор, remineralization, минерализация воды, GH KH calculator, калькулятор жёсткости, L-catfish breeding, разведение лорикариевых сомов, TDS calculator, осмос, вода для аквариума, Ca Mg ratio, кальций магний, аквариумные соли, water parameters, параметры воды, PlecoHobby, L-сомы, л-сомы, калькулятор солей, remineralization calculator, aquarium chemistry, химия воды, аквариумистика">
+    <meta name="author" content="PlecoHobby">
+    <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0284C7">
     
-    <!-- Favicon -->
+    <!-- 🔥 OPEN GRAPH / SOCIAL SHARING 🔥 -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AquaCalc — Калькулятор параметров воды для аквариума">
+    <meta property="og:description" content="Профессиональный калькулятор минерализации воды. Расчёт GH, KH, TDS, ионного состава для L-сомов и других видов.">
+    <meta property="og:url" content="https://lamerspy.github.io/Aquacalc/">
+    <meta property="og:image" content="https://lamerspy.github.io/Aquacalc/img/logo.png">
+    <meta property="og:site_name" content="AquaCalc">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="AquaCalc — Aquarium Water Calculator">
+    <meta name="twitter:description" content="Professional water remineralization calculator for aquarium fish breeding. GH, KH, TDS, ion composition.">
+    
+    <!-- 🔥 FAVICON & PWA 🔥 -->
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
     <link rel="apple-touch-icon" sizes="256x256" href="img/icon-256.png">
     <link rel="manifest" href="manifest.json">
-<!-- 🔥 GOOGLE ANALYTICS 🔥 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0G95GCRLW4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-0G95GCRLW4');
-</script>
-<!-- 🔥 КОНЕЦ GOOGLE ANALYTICS 🔥 -->
-    <title>AquaCalc — Калькулятор параметров воды</title>
+    
+    <!-- 🔥 GOOGLE ANALYTICS 🔥 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0G95GCRLW4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0G95GCRLW4');
+    </script>
+    <!-- 🔥 КОНЕЦ GOOGLE ANALYTICS 🔥 -->
+    
+    <title>AquaCalc — Калькулятор параметров воды | Aquarium Water Calculator</title>
     <link rel="stylesheet" href="style.css">
+    
+    <!-- 🔥 STRUCTURED DATA (JSON-LD) 🔥 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "AquaCalc",
+      "alternateName": ["Aquarium Water Calculator", "Калькулятор минерализации воды"],
+      "url": "https://lamerspy.github.io/Aquacalc/",
+      "description": "Professional aquarium water remineralization calculator for GH, KH, TDS, and ion composition. Supports L-catfish breeding parameters.",
+      "applicationCategory": "Utility",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "PlecoHobby"
+      },
+      "keywords": "aquarium, water calculator, remineralization, GH, KH, TDS, L-catfish, pleco, breeding"
+    }
+    </script>
 </head>
 <body>
 <div class="container" id="mainContent">
