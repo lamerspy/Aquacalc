@@ -515,11 +515,18 @@ footer {
    КНОПКА ПОДДЕРЖКИ
    ======================================== */
 .btn-support {
-    background: linear-gradient(135deg, #EC4899 0%, #DC2626 100%);
+    background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);
     color: #FFFFFF;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 
 .btn-support:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.5);
+    background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+}
+
+/* 🔥 Чтобы сердце было видно — добавляем тень к эмодзи 🔥 */
+.btn-support span {
+    text-shadow: 0 0 3px rgba(0,0,0,0.8), 0 0 5px rgba(0,0,0,0.5);
 }
