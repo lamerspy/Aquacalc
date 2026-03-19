@@ -73,7 +73,7 @@
         </h1>
         <p class="subtitle" data-i18n="subtitle">Калькулятор минерализации воды для аквариума</p>
         
-        <!-- 🔥 ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА 🔥 -->
+        <!-- 🔥 ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА - ПОД ПОДЗАГОЛОВКОМ 🔥 -->
         <div class="language-switcher">
             <button class="lang-btn active" data-lang="ru">RU</button>
             <button class="lang-btn" data-lang="en">EN</button>
@@ -123,17 +123,17 @@
                 <div class="salt-group">
                     <label for="CaBox" data-i18n="calcium_source">Источник кальция</label>
                     <select id="CaBox">
-                        <option value="0">CaSO₄·2H₂O (гипс)</option>
-                        <option value="1">CaCl₂ (безводный)</option>
-                        <option value="2">CaCl₂·2H₂O (дигидрат)</option>
+                        <option value="0" data-i18n="caso4">CaSO₄·2H₂O (гипс)</option>
+                        <option value="1" data-i18n="cacl2_anh">CaCl₂ (безводный)</option>
+                        <option value="2" data-i18n="cacl2_2h2o">CaCl₂·2H₂O (дигидрат)</option>
                         <option value="3">CaCl₂·6H₂O</option>
                     </select>
                 </div>
                 <div class="salt-group">
                     <label for="MgBox" data-i18n="magnesium_source">Источник магния</label>
                     <select id="MgBox">
-                        <option value="0">MgSO₄·7H₂O (эпсом)</option>
-                        <option value="1">MgSO₄ (безводный)</option>
+                        <option value="0" data-i18n="mgso4_7h2o">MgSO₄·7H₂O (эпсом)</option>
+                        <option value="1" data-i18n="mgso4_anh">MgSO₄ (безводный)</option>
                         <option value="2">MgCl₂·6H₂O</option>
                     </select>
                 </div>
@@ -295,39 +295,9 @@
                 <p class="warning-final">⚠️ <span data-i18n="violation">Нарушение данной лицензии влечёт юридическую ответственность.</span></p>
             </div>
         </div>
-
-        <!-- 🔥 СПРАВКА — В СТИЛЕ ЛИЦЕНЗИИ 🔥 -->
-        <div class="modal-body">
-            <h3 data-i18n="help_title">📖 Справка</h3>
-            <div class="help-text">
-                <div class="copyright-header">📖 HELP</div>
-                
-                <p><strong data-i18n="help_can_change">1.Что можно изменять:</strong></p>
-                <ul>
-                    <li data-i18n="help_calcium"><strong>Кальций (Ca²⁺)</strong> — выбирайте источник кальция из списка (гипс, CaCl₂ и др.)</li>
-                    <li data-i18n="help_magnesium"><strong>Магний (Mg²⁺)</strong> — выбирайте источник магния (эпсом, MgSO₄ и др.)</li>
-                    <li data-i18n="help_potassium"><strong>Калий (K⁺)</strong> — выбирайте источник калия (K₂SO₄, KCl, K₂CO₃)</li>
-                    <li data-i18n="help_ratio"><strong>Соотношение Ca:Mg</strong> — настройте пропорцию кальция к магнию (по умолчанию 4:1)</li>
-                    <li data-i18n="help_gh_kh"><strong>GH, KH, Объём</strong> — укажите целевые параметры воды</li>
-                </ul>
-
-                <p><strong data-i18n="help_cannot_change">2.Что нельзя изменять:</strong></p>
-                <ul>
-                    <li data-i18n="help_sodium"><strong>Натрий (Na⁺)</strong> — рассчитывается автоматически из KH (через NaHCO₃)</li>
-                    <li data-i18n="help_potassium_fixed"><strong>Калий (K⁺)</strong> — зафиксирован на уровне <strong>3.0 мг/л</strong> (оптимально для рыб)</li>
-                </ul>
-
-                <p><strong data-i18n="help_export">3.Результат экспорта:</strong></p>
-                <ul>
-                    <li data-i18n="help_export_1">Нажмите "Скачать отчёт (HTML)" для сохранения рецепта</li>
-                    <li data-i18n="help_export_2">Отчёт содержит все параметры и дозировки солей</li>
-                    <li data-i18n="help_export_3">Можно открыть в любом браузере или распечатать</li>
-                </ul>
-
-                 <p class="warning-final" data-i18n="help_note">⚠️ Все расчёты приблизительные — всегда проверяйте параметры тестами!</p>
-            </div>
-        </div>
     </div>
-</div><script src="script.js"></script>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
