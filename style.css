@@ -1,6 +1,6 @@
 /* ========================================
 AQUACALC — СТИЛИ
-Единый цвет кнопок
+Единицы в одну строку с input
 ======================================== */
 
 * {
@@ -46,56 +46,11 @@ header h1 {
     color: #FFFFFF;
 }
 
-.site-logo {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-    vertical-align: middle;
-    display: inline-block;
-}
-
 .subtitle {
     color: #BAE6FD;
     font-size: 1.1em;
     text-align: center;
     margin-bottom: 0;
-}
-
-/* ========================================
-LANGUAGE SWITCHER
-======================================== */
-.language-switcher {
-    display: flex;
-    gap: 8px;
-    justify-content: center;
-    margin-top: 30px;
-    margin-bottom: 25px;
-}
-
-.lang-btn {
-    background: rgba(21, 94, 117, 0.95);
-    border: 1px solid rgba(34, 211, 238, 0.4);
-    border-radius: 6px;
-    padding: 6px 16px;
-    color: #7DD3FC;
-    font-size: 0.85em;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    text-transform: uppercase;
-    font-family: "Consolas", "Courier New", monospace;
-}
-
-.lang-btn:hover {
-    background: rgba(34, 211, 238, 0.2);
-    border-color: #22D3EE;
-}
-
-.lang-btn.active {
-    background: linear-gradient(135deg, #22D3EE 0%, #06B6D4 100%);
-    color: #082F49;
-    border-color: #22D3EE;
 }
 
 /* ========================================
@@ -140,12 +95,12 @@ LANGUAGE SWITCHER
 }
 
 /* ========================================
-ПОЛЯ ВВОДА
+🔥 ПОЛЯ ВВОДА С ЕДИНИЦАМИ (В ОДНУ СТРОКУ) 🔥
 ======================================== */
 .input-with-unit {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 6px;
 }
 
 .input-with-unit input {
@@ -169,10 +124,23 @@ LANGUAGE SWITCHER
 
 .unit-inline {
     color: #7DD3FC;
-    font-size: 0.8em;
+    font-size: 0.85em;
     white-space: nowrap;
-    min-width: 30px;
+    min-width: 35px;
     font-family: "Consolas", "Courier New", monospace;
+    display: flex;
+    align-items: center;
+}
+
+/* Для соотношения Ca:Mg */
+.ratio-suffix {
+    color: #7DD3FC;
+    font-size: 0.85em;
+    white-space: nowrap;
+    font-family: "Consolas", "Courier New", monospace;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 /* ========================================
@@ -309,7 +277,7 @@ LANGUAGE SWITCHER
 }
 
 /* ========================================
-🔥 КНОПКИ — ЕДИНЫЙ ЦВЕТ (ОДИН БЛОК) 🔥
+КНОПКИ
 ======================================== */
 .actions-section {
     display: flex;
@@ -586,37 +554,23 @@ footer {
         gap: 8px;
     }
 
-    .site-logo {
-        width: 35px;
-        height: 35px;
-    }
-
     .subtitle {
         font-size: 0.95em;
         padding: 0 10px;
-    }
-
-    .language-switcher {
-        margin-top: 25px;
-        margin-bottom: 20px;
-    }
-
-    .lang-btn {
-        padding: 5px 14px;
-        font-size: 0.8em;
-    }
-
-    .input-with-unit input {
-        min-width: 50px;
-    }
-
-    .unit-inline {
-        min-width: 30px;
     }
 
     .modal-content {
         margin: 10% auto;
         padding: 20px;
         width: 95%;
+    }
+
+    .input-with-unit {
+        flex-wrap: nowrap;
+    }
+
+    .unit-inline {
+        min-width: 30px;
+        font-size: 0.8em;
     }
 }
