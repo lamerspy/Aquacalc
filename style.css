@@ -1,14 +1,11 @@
 /* ========================================
 AQUACALC — СТИЛИ
-Единицы в одну строку с input
 ======================================== */
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-
 body {
     font-family: "Consolas", "Courier New", monospace;
     background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
@@ -17,12 +14,10 @@ body {
     min-height: 100vh;
     padding: 20px;
 }
-
 .container {
     max-width: 900px;
     margin: 0 auto;
 }
-
 /* ========================================
 HEADER
 ======================================== */
@@ -34,7 +29,6 @@ header {
     flex-direction: column;
     align-items: center;
 }
-
 header h1 {
     font-size: 2.5em;
     text-shadow: 0 3px 8px rgba(0,0,0,0.3);
@@ -45,14 +39,19 @@ header h1 {
     gap: 12px;
     color: #FFFFFF;
 }
-
+.site-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    vertical-align: middle;
+    display: inline-block;
+}
 .subtitle {
     color: #BAE6FD;
     font-size: 1.1em;
     text-align: center;
     margin-bottom: 0;
 }
-
 /* ========================================
 КАРТОЧКИ
 ======================================== */
@@ -64,7 +63,6 @@ header h1 {
     border: 1px solid rgba(34, 211, 238, 0.35);
     box-shadow: 0 8px 24px rgba(0,0,0,0.25);
 }
-
 .card h2 {
     color: #22D3EE;
     margin-bottom: 15px;
@@ -72,7 +70,6 @@ header h1 {
     border-bottom: 1px solid rgba(34, 211, 238, 0.3);
     font-size: 1.15em;
 }
-
 /* ========================================
 СЕТКИ
 ======================================== */
@@ -81,28 +78,24 @@ header h1 {
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 10px;
 }
-
 .input-group, .salt-group {
     display: flex;
     flex-direction: column;
 }
-
 .input-group label, .salt-group label {
     color: #7DD3FC;
     margin-bottom: 4px;
     font-size: 0.8em;
     font-weight: 600;
 }
-
 /* ========================================
-🔥 ПОЛЯ ВВОДА С ЕДИНИЦАМИ (В ОДНУ СТРОКУ) 🔥
+ПОЛЯ ВВОДА
 ======================================== */
 .input-with-unit {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
 }
-
 .input-with-unit input {
     flex: 1;
     background: rgba(21, 94, 117, 0.95);
@@ -115,34 +108,18 @@ header h1 {
     min-width: 50px;
     height: 32px;
 }
-
 .input-with-unit input:focus {
     outline: none;
     border-color: #22D3EE;
     box-shadow: 0 0 6px rgba(34, 211, 238, 0.4);
 }
-
 .unit-inline {
     color: #7DD3FC;
-    font-size: 0.85em;
+    font-size: 0.8em;
     white-space: nowrap;
-    min-width: 35px;
+    min-width: 30px;
     font-family: "Consolas", "Courier New", monospace;
-    display: flex;
-    align-items: center;
 }
-
-/* Для соотношения Ca:Mg */
-.ratio-suffix {
-    color: #7DD3FC;
-    font-size: 0.85em;
-    white-space: nowrap;
-    font-family: "Consolas", "Courier New", monospace;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
 /* ========================================
 ВЫБОР ПРЕПАРАТОВ
 ======================================== */
@@ -157,13 +134,11 @@ header h1 {
     height: 32px;
     font-family: "Consolas", "Courier New", monospace;
 }
-
 .salt-group select:focus {
     outline: none;
     border-color: #22D3EE;
     box-shadow: 0 0 6px rgba(34, 211, 238, 0.4);
 }
-
 /* ========================================
 РЕЗУЛЬТАТЫ
 ======================================== */
@@ -172,7 +147,6 @@ header h1 {
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 10px;
 }
-
 .result-item {
     background: linear-gradient(135deg, rgba(21, 94, 117, 0.95) 0%, rgba(15, 52, 96, 0.95) 100%);
     padding: 12px 15px;
@@ -182,20 +156,17 @@ header h1 {
     justify-content: space-between;
     align-items: center;
 }
-
 .result-label {
     color: #E0F2FE;
     font-weight: 600;
     font-size: 0.9em;
 }
-
 .result-value {
     color: #67E8F9;
     font-family: "Consolas", "Courier New", monospace;
     font-size: 1.1em;
     font-weight: bold;
 }
-
 /* ========================================
 ИОННЫЙ СОСТАВ
 ======================================== */
@@ -204,7 +175,6 @@ header h1 {
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 8px;
 }
-
 .ion-item {
     background: rgba(21, 94, 117, 0.6);
     padding: 10px 12px;
@@ -214,19 +184,16 @@ header h1 {
     align-items: center;
     border: 1px solid rgba(34, 211, 238, 0.2);
 }
-
 .ion-name {
     color: #BAE6FD;
     font-weight: 600;
     font-size: 0.9em;
 }
-
 .ion-value {
     color: #67E8F9;
     font-family: "Consolas", "Courier New", monospace;
     font-size: 0.95em;
 }
-
 /* ========================================
 СВОДКА
 ======================================== */
@@ -236,7 +203,6 @@ header h1 {
     gap: 15px;
     margin-bottom: 15px;
 }
-
 .summary-card {
     background: linear-gradient(180deg, rgba(21, 94, 117, 0.95) 0%, rgba(15, 52, 96, 0.95) 100%);
     padding: 20px;
@@ -245,27 +211,23 @@ header h1 {
     border: 2px solid rgba(34, 211, 238, 0.4);
     transition: all 0.3s ease;
 }
-
 .summary-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 10px 24px rgba(0,0,0,0.3);
     border-color: rgba(34, 211, 238, 0.6);
 }
-
 .summary-label {
     color: #22D3EE;
     font-size: 1.1em;
     font-weight: 600;
     margin-bottom: 10px;
 }
-
 .summary-value {
     color: #67E8F9;
     font-family: "Consolas", "Courier New", monospace;
     font-size: 1.5em;
     font-weight: bold;
 }
-
 .info-bar {
     background: rgba(8, 47, 73, 0.95);
     padding: 12px;
@@ -275,7 +237,6 @@ header h1 {
     font-family: "Consolas", "Courier New", monospace;
     border: 1px solid rgba(34, 211, 238, 0.25);
 }
-
 /* ========================================
 КНОПКИ
 ======================================== */
@@ -286,7 +247,6 @@ header h1 {
     justify-content: center;
     margin-top: 25px;
 }
-
 .btn {
     padding: 12px 25px;
     border: none;
@@ -299,13 +259,11 @@ header h1 {
     background: linear-gradient(135deg, #22D3EE 0%, #06B6D4 100%);
     color: #082F49;
 }
-
 .btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(34, 211, 238, 0.4);
     background: linear-gradient(135deg, #06B6D4 0%, #22D3EE 100%);
 }
-
 /* ========================================
 FOOTER
 ======================================== */
@@ -317,7 +275,6 @@ footer {
     border-top: 1px solid rgba(255,255,255,0.1);
     font-family: "Consolas", "Courier New", monospace;
 }
-
 /* ========================================
 МОДАЛЬНОЕ ОКНО
 ======================================== */
@@ -331,7 +288,6 @@ footer {
     height: 100%;
     background-color: rgba(0,0,0,0.7);
 }
-
 .modal-content {
     background: linear-gradient(180deg, #0F3460 0%, #082F49 100%);
     margin: 5% auto;
@@ -345,7 +301,6 @@ footer {
     color: #F0F9FF;
     font-family: "Consolas", "Courier New", monospace;
 }
-
 .close {
     color: #7DD3FC;
     float: right;
@@ -353,27 +308,22 @@ footer {
     font-weight: bold;
     cursor: pointer;
 }
-
 .close:hover {
     color: #22D3EE;
 }
-
 .modal-body h3 {
     color: #22D3EE;
     margin: 20px 0 10px 0;
     border-bottom: 1px solid rgba(34, 211, 238, 0.3);
     padding-bottom: 8px;
 }
-
 .modal-body ul {
     margin-left: 20px;
     color: #BAE6FD;
 }
-
 .modal-body li {
     margin-bottom: 8px;
 }
-
 /* ========================================
 ССЫЛКИ В МОДАЛЬНОМ ОКНЕ
 ======================================== */
@@ -386,13 +336,11 @@ footer {
     transition: all 0.3s ease;
     font-weight: 600;
 }
-
 .modal-body a:hover, .license-text a:hover {
     color: #FFFFFF;
     background: rgba(34, 211, 238, 0.3);
     border-bottom-color: #22D3EE;
 }
-
 /* ========================================
 УВЕДОМЛЕНИЯ
 ======================================== */
@@ -407,29 +355,23 @@ footer {
     line-height: 1.5;
     font-family: "Consolas", "Courier New", monospace;
 }
-
 .disclaimer p {
     margin-bottom: 10px;
 }
-
 .disclaimer p:last-child {
     margin-bottom: 0;
 }
-
 .disclaimer strong {
     color: #F87171;
 }
-
 .disclaimer ul {
     margin-left: 20px;
     margin-top: 8px;
     color: #FCA5A5;
 }
-
 .disclaimer li {
     margin-bottom: 5px;
 }
-
 /* ========================================
 ЛИЦЕНЗИЯ
 ======================================== */
@@ -443,7 +385,6 @@ footer {
     line-height: 1.6;
     font-family: "Consolas", "Courier New", monospace;
 }
-
 .license-text .copyright-header {
     background: linear-gradient(135deg, #22D3EE 0%, #06B6D4 100%);
     color: #082F49;
@@ -455,7 +396,6 @@ footer {
     text-align: center;
     text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
-
 .license-text .copyright-notice {
     background: rgba(34, 211, 238, 0.1);
     border-left: 3px solid #22D3EE;
@@ -466,30 +406,25 @@ footer {
     font-family: "Consolas", "Courier New", monospace;
     font-size: 0.95em;
 }
-
 .license-text p {
     margin-bottom: 12px;
     color: #BAE6FD;
 }
-
 .license-text strong {
     color: #22D3EE;
     font-size: 1.05em;
 }
-
 .license-text ul {
     margin-left: 25px;
     margin-bottom: 15px;
     color: #7DD3FC;
     list-style-type: disc;
 }
-
 .license-text li {
     margin-bottom: 6px;
     padding-left: 5px;
     list-style-type: disc;
 }
-
 .license-text .warning-final {
     background: rgba(239, 68, 68, 0.15);
     border: 1px solid rgba(239, 68, 68, 0.4);
@@ -500,7 +435,6 @@ footer {
     text-align: center;
     font-weight: bold;
 }
-
 /* ========================================
 КОШЕЛЬКИ — КЛИКАБЕЛЬНЫЕ
 ======================================== */
@@ -517,17 +451,14 @@ footer {
     font-family: "Consolas", "Courier New", monospace;
     font-size: 0.85em;
 }
-
 .wallet-address:hover {
     background: rgba(34, 211, 238, 0.2);
     border-color: #22D3EE;
     color: #FFFFFF !important;
 }
-
 .wallet-address:active {
     transform: scale(0.98);
 }
-
 /* ========================================
 АДАПТИВНОСТЬ (Mobile)
 ======================================== */
@@ -535,42 +466,37 @@ footer {
     .summary-grid {
         grid-template-columns: 1fr;
     }
-
     .input-grid, .salts-grid, .results-grid, .ion-grid {
         grid-template-columns: 1fr;
     }
-
     .actions-section {
         flex-direction: column;
     }
-
     .btn {
         width: 100%;
     }
-
     header h1 {
         font-size: 1.8em;
         flex-direction: row;
         gap: 8px;
     }
-
+    .site-logo {
+        width: 35px;
+        height: 35px;
+    }
     .subtitle {
         font-size: 0.95em;
         padding: 0 10px;
     }
-
+    .input-with-unit input {
+        min-width: 50px;
+    }
+    .unit-inline {
+        min-width: 30px;
+    }
     .modal-content {
         margin: 10% auto;
         padding: 20px;
         width: 95%;
-    }
-
-    .input-with-unit {
-        flex-wrap: nowrap;
-    }
-
-    .unit-inline {
-        min-width: 30px;
-        font-size: 0.8em;
     }
 }
