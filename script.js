@@ -3,23 +3,18 @@
 // ============================================================================
 const CA_PER_GH = 7.1446;
 const MG_PER_GH = 4.3062;
-
 const C_CASO4_2H2O = 0.030702;
 const C_CACL2 = 0.019786;
 const C_CACL2_2H2O = 0.026205;
 const C_CACL2_6H2O = 0.039058;
-
 const C_MGSO4_7H2O = 0.043669;
 const C_MGSO4 = 0.021325;
 const C_MGCL2_6H2O = 0.035999;
-
 const C_K2SO4 = 0.002228;
 const C_KCL = 0.001907;
 const C_K2CO3 = 0.001767;
 const TARGET_K_PPM = 3.0;
-
 const C_NAHCO3_PER_DKH = 0.029994;
-
 const M_CA = 40.078;
 const M_MG = 24.305;
 const M_NA = 22.990;
@@ -38,9 +33,290 @@ const M_NAHCO3 = 84.007;
 const M_K2SO4 = 174.259;
 const M_KCL = 74.5513;
 const M_K2CO3 = 138.205;
-
 const GH_TO_CACO3 = 17.848;
 const KH_TO_CACO3 = 17.848;
+
+// ============================================================================
+// 🔥 ПЕРЕКЛЮЧЕНИЕ ЯЗЫКА (i18n) 🔥
+// ============================================================================
+const translations = {
+    ru: {
+        // Основные элементы
+        subtitle: "Калькулятор реминерализации воды для аквариума",
+        desired_params: "Желаемые параметры",
+        gh_label: "Общая жёсткость (GH)",
+        kh_label: "Карбонатная жёсткость (KH)",
+        volume_label: "Объём воды",
+        liters: "л",
+        ca_mg_ratio: "Соотношение Ca:Mg",
+        salt_selection: "Выбор препаратов",
+        calcium_source: "Источник кальция",
+        magnesium_source: "Источник магния",
+        potassium_source: "Источник калия",
+        add_dosage: "Необходимо внести",
+        ion_composition: "Ионный состав воды",
+        summary: "Сводка",
+        export_report: "📥 Скачать отчёт (HTML)",
+        reset: "🔄 Сбросить",
+        help: "ℹ️ Справка",
+        support: "💖 Поддержать проект",
+        support_greeting: "Привет!",
+        footer_slogan: "Профессионализм в каждой капле.",
+        caso4: "CaSO₄·2H₂O (гипс)",
+        cacl2_anh: "CaCl₂ (безводный)",
+        cacl2_2h2o: "CaCl₂·2H₂O (дигидрат)",
+        mgso4_7h2o: "MgSO₄·7H₂O (эпсом)",
+        mgso4_anh: "MgSO₄ (безводный)",
+        
+        // Экспорт
+        export_title: "AquaCalc Log", 
+        export_desired: "ЖЕЛАЕМЫЕ ПАРАМЕТРЫ",
+        export_dosage: "НЕОБХОДИМО ВНЕСТИ",
+        export_results: "РЕЗУЛЬТАТЫ РАСЧЁТА",
+        export_ions: "ИОННЫЙ СОСТАВ ВОДЫ",
+        export_gh: "Общая жёсткость (GH)",
+        export_kh: "Карбонатная жёсткость (KH)",
+        export_volume: "Объём воды",
+        export_ca_mg: "Соотношение Ca:Mg",
+        
+        // Модальное окно: Уведомление
+        important_notice: "⚠️ ВАЖНОЕ УВЕДОМЛЕНИЕ",
+        disclaimer_p1: "Данный калькулятор предоставлен исключительно в ознакомительных целях.",
+        disclaimer_p2: "Мы не несём ответственности за любые последствия, возникшие в результате использования полученных данных, включая вред здоровью рыб, повреждение оборудования или иные убытки.",
+        disclaimer_p3: "Перед применением любых препаратов рекомендуется:",
+        disclaimer_li1: "Проверить расчёты независимым источником.",
+        disclaimer_li2: "Начинать с меньших дозировок.",
+        disclaimer_li3: "Контролировать параметры воды тестами.",
+        disclaimer_li4: "Наблюдать за состоянием рыб.",
+        disclaimer_final: "Используя этот калькулятор, вы принимаете на себя полную ответственность за все действия и их последствия.",
+        
+        // Модальное окно: Лицензия
+        license: "📄 Лицензия",
+        prohibited: "1. ЗАПРЕЩЕНО:",
+        prohibited_li1: "Копирование, распространение или использование кода в коммерческих целях без письменного разрешения.",
+        prohibited_li2: "Изменение, модификация или создание производных продуктов.",
+        prohibited_li3: "Продажа, sublicensing или передача прав третьим лицам.",
+        permitted: "2. РАЗРЕШЕНО:",
+        permitted_li1: "Личное использование (некоммерческое).",
+        permitted_li2: "Просмотр кода в ознакомительных целях.",
+        commercial: "3. КОММЕРЧЕСКОЕ ИСПОЛЬЗОВАНИЕ:",
+        commercial_li1: "Доступно только после приобретения лицензии.",
+        commercial_li2: "Для покупки обращайтесь:",
+        responsibility: "4. ОТВЕТСТВЕННОСТЬ:",
+        responsibility_li1: "Программа предоставляется \"КАК ЕСТЬ\".",
+        responsibility_li2: "Авторы не несут ответственности за убытки.",
+        violation: "Нарушение данной лицензии влечёт юридическую ответственность.",
+        
+        // Модальное окно: Справка
+        help_title: "📖 Справка",
+        help_can_change: "1. Что можно выбрать:",
+        help_calcium: "<strong>Кальций (Ca²⁺)</strong> — выбирайте источник кальция из списка (гипс, CaCl₂ и др.).",
+        help_magnesium: "<strong>Магний (Mg²⁺)</strong> — выбирайте источник магния (эпсом, MgSO₄ и др.).",
+        help_potassium: "<strong>Калий (K⁺)</strong> — выбирайте источник калия (K₂SO₄, KCl, K₂CO₃).",
+        help_ratio: "<strong>Соотношение Ca:Mg</strong> — настройте пропорцию кальция к магнию (по умолчанию 4:1).",
+        help_gh_kh: "<strong>GH, KH, Объём</strong> — укажите целевые параметры воды.",
+        help_cannot_change: "2. Что нельзя выбрать:",
+        help_sodium: "<strong>Натрий (Na⁺)</strong> — рассчитывается автоматически из KH (через NaHCO₃).",
+        help_potassium_fixed: "<strong>Калий (K⁺)</strong> — зафиксирован на уровне <strong>3.0 мг/л</strong> (оптимально для рыб).",
+        help_export: "3. Результат экспорта:",
+        help_export_1: "Нажмите \"Скачать отчёт (HTML)\" для сохранения рецепта.",
+        help_export_2: "Отчёт содержит все параметры и дозировки солей.",
+        help_export_3: "Можно открыть в любом браузере или распечатать.",
+        help_note: "⚠️ Цифры в калькуляторе ≠ параметры в воде; всегда перепроверяйте тестами.",
+        
+        // Модальное окно: Поддержка
+        support_title: "💖 Поддержать проект",
+        support_header: "💳 SUPPORT AQUACALC",
+        support_desc: "AquaCalc — бесплатный калькулятор для аквариумистов.",
+        support_greeting: "Привет!",
+        support_text1: "Этот калькулятор создан энтузиастами для аквариумистов.",
+        support_text2: "Мы делаем его бесплатным и доступным для всех.",
+        support_text3: "Если проект оказался полезным для вас, вы можете поддержать его развитие:",
+        support_ways: "Способы поддержки:",
+        support_way1: "<strong>💰 Финансово</strong> — любая сумма поможет оплатить хостинг и домен.",
+        support_way2: "<strong>📢 Рассказать друзьям</strong> — поделитесь ссылкой с другими аквариумистами.",
+        support_way3: "<strong>⭐ Оставить отзыв</strong> — ваш фидбек помогает улучшать калькулятор.",
+        support_way4: "<strong>🐛 Сообщить об ошибке</strong> — помогите сделать проект лучше.",
+        support_wallets: "Кошельки для поддержки:",
+        support_contact: "Для связи:",
+        support_thanks: "⚠️ Спасибо за вашу поддержку! Вместе мы сделаем проект лучше.",
+    },
+    en: {
+        // Main elements
+        subtitle: "Aquarium Water Remineralization Calculator",
+        desired_params: "Target Parameters",
+        gh_label: "General Hardness (GH)",
+        kh_label: "Carbonate Hardness (KH)",
+        volume_label: "Water Volume",
+        liters: "L",
+        ca_mg_ratio: "Ca:Mg Ratio",
+        salt_selection: "Salt Selection",
+        calcium_source: "Calcium Source",
+        magnesium_source: "Magnesium Source",
+        potassium_source: "Potassium Source",
+        add_dosage: "Required Dosage",
+        ion_composition: "Water Ion Composition",
+        summary: "Summary",
+        export_report: "📥 Download Report (HTML)",
+        reset: "🔄 Reset",
+        help: "ℹ️ Help",
+        support: "💖 Support Project",
+        support_greeting: "Hello!",
+        footer_slogan: "Professionalism in every drop.",
+        caso4: "CaSO₄·2H₂O (gypsum)",
+        cacl2_anh: "CaCl₂ (anhydrous)",
+        cacl2_2h2o: "CaCl₂·2H₂O (dihydrate)",
+        mgso4_7h2o: "MgSO₄·7H₂O (epsom)",
+        mgso4_anh: "MgSO₄ (anhydrous)",
+        
+        // Export
+        export_title: "AquaCalc Log", 
+        export_desired: "TARGET PARAMETERS",
+        export_dosage: "REQUIRED DOSAGE",
+        export_results: "CALCULATION RESULTS",
+        export_ions: "WATER ION COMPOSITION",
+        export_gh: "General Hardness (GH)",
+        export_kh: "Carbonate Hardness (KH)",
+        export_volume: "Water Volume",
+        export_ca_mg: "Ca:Mg Ratio",
+        
+        // Modal: Notice
+        important_notice: "⚠️ IMPORTANT NOTICE",
+        disclaimer_p1: "This calculator is provided for informational purposes only.",
+        disclaimer_p2: "We are not responsible for any consequences resulting from the use of this data, including harm to fish, equipment damage, or other losses.",
+        disclaimer_p3: "Before using any compounds, it is recommended to:",
+        disclaimer_li1: "Verify calculations with an independent source.",
+        disclaimer_li2: "Start with lower dosages.",
+        disclaimer_li3: "Monitor water parameters with tests.",
+        disclaimer_li4: "Observe fish condition.",
+        disclaimer_final: "By using this calculator, you accept full responsibility for all actions and consequences.",
+        
+        // Modal: License
+        license: "📄 License",
+        prohibited: "1. PROHIBITED:",
+        prohibited_li1: "Copying, distributing, or using the code for commercial purposes without written permission.",
+        prohibited_li2: "Modifying, adapting, or creating derivative works.",
+        prohibited_li3: "Selling, sublicensing, or transferring rights to third parties.",
+        permitted: "2. PERMITTED:",
+        permitted_li1: "Personal, non-commercial use.",
+        permitted_li2: "Viewing source code for educational purposes.",
+        commercial: "3. COMMERCIAL USE:",
+        commercial_li1: "Available only after purchasing a license.",
+        commercial_li2: "For licensing contact:",
+        responsibility: "4. LIABILITY:",
+        responsibility_li1: "Software is provided \"AS IS\".",
+        responsibility_li2: "Authors are not liable for any damages.",
+        violation: "Violation of this license entails legal liability.",
+        
+        // Modal: Help
+        help_title: "📖 Help",
+        help_can_change: "1. What you can select:",
+        help_calcium: "<strong>Calcium (Ca²⁺)</strong> — choose calcium source from the list (gypsum, CaCl₂, etc.).",
+        help_magnesium: "<strong>Magnesium (Mg²⁺)</strong> — choose magnesium source (epsom, MgSO₄, etc.).",
+        help_potassium: "<strong>Potassium (K⁺)</strong> — choose potassium source (K₂SO₄, KCl, K₂CO₃).",
+        help_ratio: "<strong>Ca:Mg Ratio</strong> — set calcium to magnesium proportion (default 4:1).",
+        help_gh_kh: "<strong>GH, KH, Volume</strong> — specify target water parameters.",
+        help_cannot_change: "2. What you cannot select:",
+        help_sodium: "<strong>Sodium (Na⁺)</strong> — calculated automatically from KH (via NaHCO₃).",
+        help_potassium_fixed: "<strong>Potassium (K⁺)</strong> — fixed at <strong>3.0 mg/L</strong> (optimal for fish).",
+        help_export: "3. Export result:",
+        help_export_1: "Click \"Download Report (HTML)\" to save the recipe.",
+        help_export_2: "Report contains all parameters and salt dosages.",
+        help_export_3: "Can be opened in any browser or printed.",
+        help_note: "⚠️ Calculator numbers ≠ water parameters; always verify with tests.",
+        
+        // Modal: Support
+        support_title: "💖 Support Project",
+        support_header: "💳 SUPPORT AQUACALC",
+        support_desc: "AquaCalc is a free calculator for aquarists.",
+        support_greeting: "Hello!",
+        support_text1: "This calculator is created by enthusiasts for aquarists.",
+        support_text2: "We make it free and accessible for everyone.",
+        support_text3: "If the project was useful for you, you can support its development:",
+        support_ways: "Ways to support:",
+        support_way1: "<strong>💰 Financially</strong> — any amount will help pay for hosting and domain.",
+        support_way2: "<strong>📢 Tell friends</strong> — share the link with other aquarists.",
+        support_way3: "<strong>⭐ Leave a review</strong> — your feedback helps improve the calculator.",
+        support_way4: "<strong>🐛 Report a bug</strong> — help make the project better.",
+        support_wallets: "Wallets for support:",
+        support_contact: "For contact:",
+        support_thanks: "⚠️ Thank you for your support! Together we will make the project better.",
+    }
+};
+
+let currentLang = 'ru';
+
+function loadLanguage() {
+    const saved = localStorage.getItem('aquacalc_language');
+    if (saved && (saved === 'ru' || saved === 'en')) {
+        currentLang = saved;
+    } else {
+        const browserLang = navigator.language.slice(0, 2);
+        currentLang = (browserLang === 'ru') ? 'ru' : 'en';
+    }
+    updateLanguageUI();
+}
+
+function updateLanguageUI() {
+    // Перевод всех элементов с data-i18n
+    // Используем innerHTML для поддержки HTML-тегов внутри текста
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[currentLang][key]) {
+            el.innerHTML = translations[currentLang][key];
+        }
+    });
+    
+    // Обновление опций в select
+    updateSaltOptions();
+    
+    // Обновление активной кнопки
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-lang') === currentLang) {
+            btn.classList.add('active');
+        }
+    });
+    
+    // Сохранение языка
+    document.documentElement.lang = currentLang;
+    localStorage.setItem('aquacalc_language', currentLang);
+    
+    // Пересчёт с новыми единицами
+    calculate();
+}
+
+function updateSaltOptions() {
+    const caBox = document.getElementById('CaBox');
+    const mgBox = document.getElementById('MgBox');
+    
+    if (caBox) {
+        caBox.options[0].textContent = translations[currentLang].caso4;
+        caBox.options[1].textContent = translations[currentLang].cacl2_anh;
+        caBox.options[2].textContent = translations[currentLang].cacl2_2h2o;
+    }
+    
+    if (mgBox) {
+        mgBox.options[0].textContent = translations[currentLang].mgso4_7h2o;
+        mgBox.options[1].textContent = translations[currentLang].mgso4_anh;
+    }
+}
+
+function switchLanguage(lang) {
+    if (lang === 'ru' || lang === 'en') {
+        currentLang = lang;
+        updateLanguageUI();
+    }
+}
+
+function initLanguageSwitcher() {
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.getAttribute('data-lang');
+            switchLanguage(lang);
+        });
+    });
+}
 
 // ============================================================================
 // ГЛАВНАЯ ФУНКЦИЯ РАСЧЁТА
@@ -51,7 +327,7 @@ function calculate() {
     const volume = parseFloat(document.getElementById('editVolume').value.replace(',', '.')) || 0;
     let targetRatio = parseFloat(document.getElementById('Ca_Mg').value.replace(',', '.')) || 0;
     if (targetRatio <= 0) targetRatio = 4;
-
+    
     const caSaltIndex = parseInt(document.getElementById('CaBox').value);
     const mgSaltIndex = parseInt(document.getElementById('MgBox').value);
     const kSaltIndex = parseInt(document.getElementById('KBox').value);
@@ -163,25 +439,29 @@ function calculate() {
         maximumFractionDigits: decimals
     });
 
+    // Единицы измерения в зависимости от языка
+    const unitGram = currentLang === 'ru' ? ' г' : ' g';
+    const unitMgL = currentLang === 'ru' ? ' мг/л' : ' mg/L';
+    const unitVol = currentLang === 'ru' ? ' л' : ' L';
+
     // Дозировки солей
-    document.getElementById('lblCaValue').textContent = `${fmt(caGrams)} г`;
-    document.getElementById('lblMgValue').textContent = `${fmt(mgGrams)} г`;
-    document.getElementById('lblNaHCO3Value').textContent = `${fmt(nahco3Grams)} г`;
-    document.getElementById('Label_K').textContent = `${fmt(kSaltMass)} г`;
-    document.getElementById('Label_Ka').textContent = `${fmt(TARGET_K_PPM, 1)} мг/л`;
+    document.getElementById('lblCaValue').textContent = `${fmt(caGrams)}${unitGram}`;
+    document.getElementById('lblMgValue').textContent = `${fmt(mgGrams)}${unitGram}`;
+    document.getElementById('lblNaHCO3Value').textContent = `${fmt(nahco3Grams)}${unitGram}`;
+    document.getElementById('Label_K').textContent = `${fmt(kSaltMass)}${unitGram}`;
+    document.getElementById('Label_Ka').textContent = `${fmt(TARGET_K_PPM, 1)}${unitMgL}`;
 
     // Ионный состав
-    document.getElementById('Label3').textContent = `${fmt(caPpm, 1)} мг/л`;
-    document.getElementById('Label10').textContent = `${fmt(mgPpm, 1)} мг/л`;
-    document.getElementById('Label_Na').textContent = `${fmt(naPpm, 1)} мг/л`;
-    document.getElementById('Label_Ka').textContent = `${fmt(TARGET_K_PPM, 1)} мг/л`;
-    document.getElementById('Label15').textContent = `${fmt(so4Ppm, 1)} мг/л`;
-    document.getElementById('Label5').textContent = `${fmt(clPpm, 1)} мг/л`;
-    document.getElementById('Label_HCO3').textContent = `${fmt(hco3Ppm, 1)} мг/л`;
+    document.getElementById('Label3').textContent = `${fmt(caPpm, 1)}${unitMgL}`;
+    document.getElementById('Label10').textContent = `${fmt(mgPpm, 1)}${unitMgL}`;
+    document.getElementById('Label_Na').textContent = `${fmt(naPpm, 1)}${unitMgL}`;
+    document.getElementById('Label15').textContent = `${fmt(so4Ppm, 1)}${unitMgL}`;
+    document.getElementById('Label5').textContent = `${fmt(clPpm, 1)}${unitMgL}`;
+    document.getElementById('Label_HCO3').textContent = `${fmt(hco3Ppm, 1)}${unitMgL}`;
 
     // Сводка
     document.getElementById('Label_TDC').textContent = `${fmt(totalTds, 1)} ppm`;
-    document.getElementById('Label_TH_CaCO3').textContent = `${fmt(thCaco3, 0)} мг/л`;
+    document.getElementById('Label_TH_CaCO3').textContent = `${fmt(thCaco3, 0)}${unitMgL}`;
 
     const totalKh = kh + kKhContrib;
     document.getElementById('Label_KH').textContent = `${fmt(totalKh, 2)} °dKH`;
@@ -194,7 +474,7 @@ function calculate() {
         infoText = `GH ≈ ${fmt(gh, 1)} | KH ≈ ${fmt(totalKh, 2)} | Ca:Mg ≈ ∞:1`;
     } else {
         const caMgRatio = caPpm / mgPpm;
-        infoText = `GH ≈ ${fmt(gh, 1)} | KH ≈ ${fmt(totalKh, 2)} | Ca:Mg ≈ ${fmt(caMgRatio, 2)}:1 | V ≈ ${fmt(volume, 0)} л`;
+        infoText = `GH ≈ ${fmt(gh, 1)} | KH ≈ ${fmt(totalKh, 2)} | Ca:Mg ≈ ${fmt(caMgRatio, 2)}:1 | V ≈ ${fmt(volume, 0)}${unitVol}`;
     }
     document.getElementById('Label_info').textContent = infoText;
 
@@ -247,15 +527,15 @@ function resetSettings() {
 // ЭКСПОРТ В HTML
 // ============================================================================
 function exportToHtml() {
-    const now = new Date().toLocaleString('ru-RU');
+    const now = new Date().toLocaleString(currentLang === 'ru' ? 'ru-RU' : 'en-US');
     const getVal = (id) => document.getElementById(id).textContent;
-
+    
     const html = `<!DOCTYPE html>
-<html lang="ru">
+<html lang="${currentLang}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaCalc Log</title>
+    <title>${translations[currentLang].export_title}</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -381,22 +661,22 @@ function exportToHtml() {
 </head>
 <body>
     <div class="header">
-        <h1>🐟 AQUACALC LOG</h1>
+        <h1>🐟 AquaCalc Log</h1>
         <p>${now}</p>
     </div>
 
     <div class="section">
-        <h2>ЖЕЛАЕМЫЕ ПАРАМЕТРЫ</h2>
+        <h2>${translations[currentLang].export_desired}</h2>
         <table>
-            <tr><td>Общая жёсткость (GH)</td><td><span class="value-box">${document.getElementById('editHardness').value} °dGH</span></td></tr>
-            <tr><td>Карбонатная жёсткость (KH)</td><td><span class="value-box">${document.getElementById('editKH').value} °dKH</span></td></tr>
-            <tr><td>Объём воды</td><td><span class="value-box">${document.getElementById('editVolume').value} л</span></td></tr>
-            <tr><td>Соотношение Ca:Mg</td><td><span class="value-box">${document.getElementById('Ca_Mg').value} : 1</span></td></tr>
+            <tr><td>${translations[currentLang].export_gh}</td><td><span class="value-box">${document.getElementById('editHardness').value} °dGH</span></td></tr>
+            <tr><td>${translations[currentLang].export_kh}</td><td><span class="value-box">${document.getElementById('editKH').value} °dKH</span></td></tr>
+            <tr><td>${translations[currentLang].export_volume}</td><td><span class="value-box">${document.getElementById('editVolume').value} ${currentLang === 'ru' ? 'л' : 'L'}</span></td></tr>
+            <tr><td>${translations[currentLang].export_ca_mg}</td><td><span class="value-box">${document.getElementById('Ca_Mg').value} : 1</span></td></tr>
         </table>
     </div>
 
     <div class="section">
-        <h2>НЕОБХОДИМО ВНЕСТИ</h2>
+        <h2>${translations[currentLang].export_dosage}</h2>
         <table>
             <tr><td>${getVal('saltCaName')}</td><td><span class="value-box">${getVal('lblCaValue')}</span></td></tr>
             <tr><td>${getVal('saltMgName')}</td><td><span class="value-box">${getVal('lblMgValue')}</span></td></tr>
@@ -406,7 +686,7 @@ function exportToHtml() {
     </div>
 
     <div class="section">
-        <h2>РЕЗУЛЬТАТЫ РАСЧЁТА</h2>
+        <h2>${translations[currentLang].export_results}</h2>
         <div class="summary-grid">
             <div class="summary-card">
                 <div class="label">TDS</div>
@@ -424,7 +704,7 @@ function exportToHtml() {
     </div>
 
     <div class="section">
-        <h2>ИОННЫЙ СОСТАВ ВОДЫ</h2>
+        <h2>${translations[currentLang].export_ions}</h2>
         <table>
             <tr><td>Ca²⁺</td><td>${getVal('Label3')}</td></tr>
             <tr><td>Mg²⁺</td><td>${getVal('Label10')}</td></tr>
@@ -438,11 +718,11 @@ function exportToHtml() {
 
     <div class="footer">
         <p>PlecoHobby © ${new Date().getFullYear()}</p>
-        <p>Профессионализм в каждой капле.</p>
+        <p>${translations[currentLang].footer_slogan}</p>
     </div>
 </body>
 </html>`;
-
+    
     const blob = new Blob([html], { type: 'text/html' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -454,79 +734,81 @@ function exportToHtml() {
     URL.revokeObjectURL(url);
 }
 
+     
 // ============================================================================
-// МОДАЛЬНОЕ ОКНО
+// МОДАЛЬНЫЕ ОКНА
 // ============================================================================
 function setupModal() {
     const modal = document.getElementById('aboutModal');
     const btn = document.getElementById('btnAbout');
     const close = document.querySelector('.close');
-
-    btn.addEventListener('click', () => modal.style.display = 'block');
-    close.addEventListener('click', () => modal.style.display = 'none');
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) modal.style.display = 'none';
-    });
+    if(btn && modal && close) {
+        btn.addEventListener('click', () => modal.style.display = 'block');
+        close.addEventListener('click', () => modal.style.display = 'none');
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) modal.style.display = 'none';
+        });
+    }
 }
 
-// ============================================================================
-// ИНИЦИАЛИЗАЦИЯ
-// ============================================================================
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('year').textContent = new Date().getFullYear();
-    loadSettings();
-
-    const inputs = ['editHardness', 'editKH', 'editVolume', 'Ca_Mg'];
-    inputs.forEach(id => {
-        const el = document.getElementById(id);
-        el.addEventListener('input', calculate);
-    });
-
-    document.getElementById('CaBox').addEventListener('change', calculate);
-    document.getElementById('MgBox').addEventListener('change', calculate);
-    document.getElementById('KBox').addEventListener('change', calculate);
-
-    document.getElementById('btnExport').addEventListener('click', exportToHtml);
-    document.getElementById('btnReset').addEventListener('click', resetSettings);
-
-    setupModal();
-    calculate();
-});
-// ============================================================================
-// МОДАЛЬНОЕ ОКНО ПОДДЕРЖКИ
-// ============================================================================
 function setupSupportModal() {
     const modal = document.getElementById('supportModal');
     const btn = document.getElementById('btnSupport');
-    const close = modal.querySelector('.close');
-    
-    btn.addEventListener('click', () => modal.style.display = 'block');
-    close.addEventListener('click', () => modal.style.display = 'none');
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) modal.style.display = 'none';
-    });
+    if(btn && modal) {
+        const close = modal.querySelector('.close');
+        btn.addEventListener('click', () => modal.style.display = 'block');
+        if(close) {
+            close.addEventListener('click', () => modal.style.display = 'none');
+        }
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) modal.style.display = 'none';
+        });
+    }
 }
 
 // ============================================================================
-// ИНИЦИАЛИЗАЦИЯ
+// ИНИЦИАЛИЗАЦИЯ (ВСЁ В ОДНОМ МЕСТЕ)
 // ============================================================================
 document.addEventListener('DOMContentLoaded', () => {
-    // ... существующий код ...
+    document.getElementById('year').textContent = new Date().getFullYear();
     
-    setupSupportModal();  // ← ДОБАВИТЬ
+    loadSettings();
+    loadLanguage();           // ← Загрузка языка
+    initLanguageSwitcher();   // ← Инициализация переключателя
+    
+    const inputs = ['editHardness', 'editKH', 'editVolume', 'Ca_Mg'];
+    inputs.forEach(id => {
+        const el = document.getElementById(id);
+        if(el) el.addEventListener('input', calculate);
+    });
+    
+    const caBox = document.getElementById('CaBox');
+    const mgBox = document.getElementById('MgBox');
+    const kBox = document.getElementById('KBox');
+    
+    if(caBox) caBox.addEventListener('change', calculate);
+    if(mgBox) mgBox.addEventListener('change', calculate);
+    if(kBox) kBox.addEventListener('change', calculate);
+    
+    const btnExport = document.getElementById('btnExport');
+    const btnReset = document.getElementById('btnReset');
+    
+    if(btnExport) btnExport.addEventListener('click', exportToHtml);
+    if(btnReset) btnReset.addEventListener('click', resetSettings);
+    
     setupModal();
+    setupSupportModal();
     calculate();
 });
+
 // ============================================================================
 // 🔥 КОПИРОВАНИЕ КОШЕЛЬКОВ В БУФЕР 🔥
 // ============================================================================
 function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(() => {
-        // Показываем уведомление
-        alert('✅ Адрес скопирован в буфер обмена!\n\n' + text);
+        alert('✅ Address copied to clipboard!\n\n' + text);
     }).catch(err => {
-        // Если не получилось
-        console.error('Ошибка копирования: ', err);
-        alert('❌ Не удалось скопировать. Попробуйте вручную.');
+        console.error('Copy error: ', err);
+        alert('❌ Failed to copy. Try manually.');
     });
 }

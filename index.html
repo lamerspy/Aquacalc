@@ -71,165 +71,173 @@
             <img src="img/logo.png" alt="AquaCalc Logo" class="site-logo">
             AquaCalc
         </h1>
-        <p class="subtitle">Калькулятор реминерализации воды для аквариума</p>
+        <p class="subtitle" data-i18n="subtitle">Калькулятор реминерализации воды для аквариума</p>
     </header>
 
     <main>
-        <!-- Ввод параметров -->
-        <section class="card input-section">
-            <h2>Желаемые параметры</h2>
-            <div class="input-grid">
-                <div class="input-group">
-                    <label for="editHardness">Общая жёсткость (GH)</label>
-                    <div class="input-with-unit">
-                        <input type="text" id="editHardness" value="6" pattern="[0-9.,]*">
-                        <span class="unit-inline">°dGH</span>
-                    </div>
-                </div>
-                <div class="input-group">
-                    <label for="editKH">Карбонатная жёсткость (KH)</label>
-                    <div class="input-with-unit">
-                        <input type="text" id="editKH" value="2" pattern="[0-9.,]*">
-                        <span class="unit-inline">°dKH</span>
-                    </div>
-                </div>
-                <div class="input-group">
-                    <label for="editVolume">Объём воды</label>
-                    <div class="input-with-unit">
-                        <input type="text" id="editVolume" value="10" pattern="[0-9.,]*">
-                        <span class="unit-inline">л</span>
-                    </div>
-                </div>
-                <div class="input-group">
-                    <label for="Ca_Mg">Соотношение Ca:Mg</label>
-                    <div class="input-with-unit">
-                        <input type="text" id="Ca_Mg" value="4" pattern="[0-9.,]*">
-                        <span class="unit-inline">: 1</span>
-                    </div>
-                </div>
+        <!-- Карточка 1: Желаемые параметры -->
+<section class="card input-section">
+    <h2 data-i18n="desired_params">Желаемые параметры</h2>
+    
+    <!-- Переключатель языка -->
+    <div class="language-switcher card-lang">
+        <button class="lang-btn active" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    
+    <div class="input-grid">
+        <div class="input-group">
+            <label data-i18n="gh_label">Общая жёсткость (GH)</label>
+            <div class="input-with-unit">
+                <input type="text" id="editHardness" value="6" pattern="[0-9.,]*">
+                <span class="unit-inline">°dGH</span>
             </div>
-        </section>
+        </div>
+        <div class="input-group">
+            <label data-i18n="kh_label">Карбонатная жёсткость (KH)</label>
+            <div class="input-with-unit">
+                <input type="text" id="editKH" value="2" pattern="[0-9.,]*">
+                <span class="unit-inline">°dKH</span>
+            </div>
+        </div>
+        <div class="input-group">
+            <label data-i18n="volume_label">Объём воды</label>
+            <div class="input-with-unit">
+                <input type="text" id="editVolume" value="10" pattern="[0-9.,]*">
+                <span class="unit-inline" data-i18n="liters">л</span>
+            </div>
+        </div>
+        <div class="input-group">
+            <label data-i18n="ca_mg_ratio">Соотношение Ca:Mg</label>
+            <div class="input-with-unit">
+                <input type="text" id="Ca_Mg" value="4" pattern="[0-9.,]*">
+                <span class="unit-inline">: 1</span>
+            </div>
+        </div>
+    </div>
+</section>
 
-        <!-- Выбор солей -->
-        <section class="card salts-section">
-            <h2>Выбор препаратов</h2>
-            <div class="salts-grid">
-                <div class="salt-group">
-                    <label for="CaBox">Источник кальция</label>
-                    <select id="CaBox">
-                        <option value="0">CaSO₄·2H₂O (гипс)</option>
-                        <option value="1">CaCl₂ (безводный)</option>
-                        <option value="2">CaCl₂·2H₂O (дигидрат)</option>
-                        <option value="3">CaCl₂·6H₂O</option>
-                    </select>
-                </div>
-                <div class="salt-group">
-                    <label for="MgBox">Источник магния</label>
-                    <select id="MgBox">
-                        <option value="0">MgSO₄·7H₂O (эпсом)</option>
-                        <option value="1">MgSO₄ (безводный)</option>
-                        <option value="2">MgCl₂·6H₂O</option>
-                    </select>
-                </div>
-                <div class="salt-group">
-                    <label for="KBox">Источник калия</label>
-                    <select id="KBox">
-                        <option value="0">K₂SO₄</option>
-                        <option value="1">KCl</option>
-                        <option value="2">K₂CO₃</option>
-                    </select>
-                </div>
-            </div>
-        </section>
+<!-- Карточка 2: Выбор препаратов -->
+<section class="card salts-section">
+    <h2 data-i18n="salt_selection">Выбор препаратов</h2>
+    <div class="salts-grid">
+        <div class="salt-group">
+            <label data-i18n="calcium_source">Источник кальция</label>
+            <select id="CaBox">
+                <option value="0" data-i18n="caso4">CaSO₄·2H₂O (гипс)</option>
+                <option value="1" data-i18n="cacl2_anh">CaCl₂ (безводный)</option>
+                <option value="2" data-i18n="cacl2_2h2o">CaCl₂·2H₂O (дигидрат)</option>
+                <option value="3">CaCl₂·6H₂O</option>
+            </select>
+        </div>
+        <div class="salt-group">
+            <label data-i18n="magnesium_source">Источник магния</label>
+            <select id="MgBox">
+                <option value="0" data-i18n="mgso4_7h2o">MgSO₄·7H₂O (эпсом)</option>
+                <option value="1" data-i18n="mgso4_anh">MgSO₄ (безводный)</option>
+                <option value="2">MgCl₂·6H₂O</option>
+            </select>
+        </div>
+        <div class="salt-group">
+            <label data-i18n="potassium_source">Источник калия</label>
+            <select id="KBox">
+                <option value="0">K₂SO₄</option>
+                <option value="1">KCl</option>
+                <option value="2">K₂CO₃</option>
+            </select>
+        </div>
+    </div>
+</section>
 
-        <!-- Результаты -->
-        <section class="card results-section">
-            <h2>Необходимо внести</h2>
-            <div class="results-grid">
-                <div class="result-item">
-                    <span class="result-label" id="saltCaName">CaSO₄·2H₂O</span>
-                    <span class="result-value" id="lblCaValue">0.00 г</span>
-                </div>
-                <div class="result-item">
-                    <span class="result-label" id="saltMgName">MgSO₄·7H₂O</span>
-                    <span class="result-value" id="lblMgValue">0.00 г</span>
-                </div>
-                <div class="result-item">
-                    <span class="result-label">NaHCO₃</span>
-                    <span class="result-value" id="lblNaHCO3Value">0.00 г</span>
-                </div>
-                <div class="result-item">
-                    <span class="result-label" id="saltKName">KCl</span>
-                    <span class="result-value" id="Label_K">0.00 г</span>
-                </div>
-            </div>
-        </section>
+<!-- Карточка 3: Необходимо внести -->
+<section class="card results-section">
+    <h2 data-i18n="add_dosage">Необходимо внести</h2>
+    <div class="results-grid">
+        <div class="result-item">
+            <span class="result-label" id="saltCaName">CaSO₄·2H₂O</span>
+            <span class="result-value" id="lblCaValue">0.00 г</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label" id="saltMgName">MgSO₄·7H₂O</span>
+            <span class="result-value" id="lblMgValue">0.00 г</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label">NaHCO₃</span>
+            <span class="result-value" id="lblNaHCO3Value">0.00 г</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label" id="saltKName">KCl</span>
+            <span class="result-value" id="Label_K">0.00 г</span>
+        </div>
+    </div>
+</section>
 
-        <!-- Ионный состав -->
-        <section class="card ion-section">
-            <h2>Ионный состав воды</h2>
-            <div class="ion-grid">
-                <div class="ion-item">
-                    <span class="ion-name">Ca²⁺</span>
-                    <span class="ion-value" id="Label3">0.0 мг/л</span>
-                </div>
-                <div class="ion-item">
-                    <span class="ion-name">Mg²⁺</span>
-                    <span class="ion-value" id="Label10">0.0 мг/л</span>
-                </div>
-                <div class="ion-item">
-                    <span class="ion-name">Na⁺</span>
-                    <span class="ion-value" id="Label_Na">0.0 мг/л</span>
-                </div>
-                <div class="ion-item">
-                    <span class="ion-name">K⁺</span>
-                    <span class="ion-value" id="Label_Ka">0.0 мг/л</span>
-                </div>
-                <div class="ion-item">
-                    <span class="ion-name">SO₄²⁻</span>
-                    <span class="ion-value" id="Label15">0.0 мг/л</span>
-                </div>
-                <div class="ion-item">
-                    <span class="ion-name">Cl⁻</span>
-                    <span class="ion-value" id="Label5">0.0 мг/л</span>
-                </div>
-                <div class="ion-item">
-                    <span class="ion-name">HCO₃⁻</span>
-                    <span class="ion-value" id="Label_HCO3">0.0 мг/л</span>
-                </div>
-            </div>
-        </section>
+<!-- Карточка 4: Ионный состав -->
+<section class="card ions-section">
+    <h2 data-i18n="ion_composition">Ионный состав воды</h2>
+    <div class="ion-grid">
+        <div class="ion-item">
+            <span class="ion-name">Ca²⁺</span>
+            <span class="ion-value" id="Label3">0.0 мг/л</span>
+        </div>
+        <div class="ion-item">
+            <span class="ion-name">Mg²⁺</span>
+            <span class="ion-value" id="Label10">0.0 мг/л</span>
+        </div>
+        <div class="ion-item">
+            <span class="ion-name">Na⁺</span>
+            <span class="ion-value" id="Label_Na">0.0 мг/л</span>
+        </div>
+        <div class="ion-item">
+            <span class="ion-name">K⁺</span>
+            <span class="ion-value" id="Label_Ka">0.0 мг/л</span>
+        </div>
+        <div class="ion-item">
+            <span class="ion-name">SO₄²⁻</span>
+            <span class="ion-value" id="Label15">0.0 мг/л</span>
+        </div>
+        <div class="ion-item">
+            <span class="ion-name">Cl⁻</span>
+            <span class="ion-value" id="Label5">0.0 мг/л</span>
+        </div>
+        <div class="ion-item">
+            <span class="ion-name">HCO₃⁻</span>
+            <span class="ion-value" id="Label_HCO3">0.0 мг/л</span>
+        </div>
+    </div>
+</section>
 
-        <!-- Сводка -->
-        <section class="card summary-section">
-            <h2>Сводка</h2>
-            <div class="summary-grid">
-                <div class="summary-card">
-                    <div class="summary-label">TDS</div>
-                    <div class="summary-value" id="Label_TDC">0 ppm</div>
-                </div>
-                <div class="summary-card">
-                    <div class="summary-label">TH (CaCO₃)</div>
-                    <div class="summary-value" id="Label_TH_CaCO3">0 мг/л</div>
-                </div>
-                <div class="summary-card">
-                    <div class="summary-label">KH</div>
-                    <div class="summary-value" id="Label_KH">0 °dKH</div>
-                </div>
-            </div>
-            <div class="info-bar" id="Label_info">
-                GH ≈ 0.0 | KH ≈ 0.0 | Ca:Mg ≈ 0.00:1
-            </div>
-        </section>
+<!-- Карточка 5: Сводка -->
+<section class="card summary-section">
+    <h2 data-i18n="summary">Сводка</h2>
+    <div class="summary-grid">
+        <div class="summary-card">
+            <div class="summary-label">TDS</div>
+            <div class="summary-value" id="Label_TDC">0 ppm</div>
+        </div>
+        <div class="summary-card">
+            <div class="summary-label">TH (CaCO₃)</div>
+            <div class="summary-value" id="Label_TH_CaCO3">0 мг/л</div>
+        </div>
+        <div class="summary-card">
+            <div class="summary-label">KH</div>
+            <div class="summary-value" id="Label_KH">0 °dKH</div>
+        </div>
+    </div>
+    <div class="info-bar">
+        <span id="Label_info">GH ≈ 0.0 | KH ≈ 0.0 | Ca:Mg ≈ 0.00:1</span>
+    </div>
+</section>
 
-        <!-- Кнопки действий -->
-    <section class="actions-section">
-    <button id="btnExport" class="btn btn-primary">📥 <span data-i18n="export_report">Скачать отчёт (HTML)</span></button>
-    <button id="btnReset" class="btn btn-secondary">🔄 <span data-i18n="reset">Сбросить</span></button>
-    <button id="btnAbout" class="btn btn-info">ℹ️ <span data-i18n="help">Справка</span></button>
-    <button id="btnSupport" class="btn btn-support">💖 <span data-i18n="support_project">Поддержать проект</span></button>    
-    </section>
-    </main>
+<!-- Кнопки -->
+<section class="actions-section">
+    <button class="btn btn-primary" id="btnExport" data-i18n="export_report">📥 Скачать отчёт (HTML)</button>
+    <button class="btn btn-secondary" id="btnReset" data-i18n="reset">🔄 Сбросить</button>
+    <button class="btn btn-info" id="btnAbout" data-i18n="help">ℹ️ Справка</button>
+    <button class="btn btn-info" id="btnSupport" data-i18n="support">💖 Поддержать проект</button>
+</section>
+
+<!-- Footer -->
 
     <footer>
     <p>PlecoHobby © <span id="year"></span></p>
@@ -337,9 +345,9 @@
         <div class="modal-body">
             <div class="license-text">
                 <div class="copyright-header">💳 SUPPORT AQUACALC</div>
-                <div class="copyright-notice">AquaCalc — бесплатный калькулятор для аквариумистов.</div>
+                <div class="copyright-notice" data-i18n="support_desc">AquaCalc — бесплатный калькулятор для аквариумистов.</div>
                 
-                <p><strong data-i18n="support_intro">Привет!</strong></p>
+                <p><strong data-i18n="support_greeting">Привет!</strong></p>
                 <p data-i18n="support_text1">Этот калькулятор создан энтузиастами для аквариумистов.</p>
                 <p data-i18n="support_text2">Мы делаем его бесплатным и доступным для всех.</p>
                 
