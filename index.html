@@ -76,6 +76,55 @@
     </script>
 </head>
 <body>
+
+ <!-- 🔔 BANNER: ПЕРЕЕЗД НА НОВЫЙ ДОМЕН 🔔 -->
+<div id="migrationBanner" style="
+    background: linear-gradient(135deg, #0284C7, #0369A1);
+    color: white;
+    padding: 12px 20px;
+    text-align: center;
+    font-weight: 500;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+">
+    <span>⚠️</span>
+    <span>Мы переезжаем! Старый домен скоро перестанет работать.</span>
+    <a href="https://plecohobby.github.io/AquaCalc/" 
+       style="
+           color: #fff;
+           text-decoration: none;
+           border-bottom: 2px solid rgba(255,255,255,0.6);
+           padding-bottom: 2px;
+           transition: all 0.2s;
+       "
+       onmouseover="this.style.borderColor='white'"
+       onmouseout="this.style.borderColor='rgba(255,255,255,0.6)'">
+       🌐 Новый адрес: plecohobby.github.io/AquaCalc/
+    </a>
+    <button onclick="document.getElementById('migrationBanner').style.display='none'" 
+            style="
+                background: rgba(255,255,255,0.2);
+                border: none;
+                color: white;
+                width: 28px;
+                height: 28px;
+                border-radius: 50%;
+                cursor: pointer;
+                font-size: 16px;
+                line-height: 1;
+                margin-left: 8px;
+            "
+            aria-label="Закрыть">✕</button>
+</div>
+<!-- 🔚 КОНЕЦ BANNER 🔚 -->
+    
 <div class="container" id="mainContent">
     <header>
         <h1>
