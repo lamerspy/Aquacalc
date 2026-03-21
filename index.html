@@ -77,50 +77,57 @@
 </head>
 <body>
 
- <!-- 🔔 BANNER: ПЕРЕЕЗД НА НОВЫЙ ДОМЕН 🔔 -->
+<!-- 🔔 BANNER: ПЕРЕЕЗД НА НОВЫЙ ДОМЕН (КРАСНЫЙ ШРИФТ) 🔔 -->
 <div id="migrationBanner" style="
-    background: linear-gradient(135deg, #0284C7, #0369A1);
-    color: white;
+    background: linear-gradient(135deg, #FEF2F2, #FEE2E2);
+    color: #DC2626;
     padding: 12px 20px;
     text-align: center;
-    font-weight: 500;
+    font-weight: 600;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.15);
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
+    border-bottom: 3px solid #DC2626;
+    font-family: inherit;
 ">
-    <span>⚠️</span>
-    <span>Мы переезжаем! Старый сайт скоро перестанет работать.</span>
+    <span style="color: #DC2626;">⚠️</span>
+    <span style="color: #DC2626;"><strong>Внимание!</strong> Старый сайт скоро перестанет работать.</span>
     <a href="https://plecohobby.github.io/AquaCalc/" 
        style="
-           color: #fff;
+           color: #B91C1C;
            text-decoration: none;
-           border-bottom: 2px solid rgba(255,255,255,0.6);
+           border-bottom: 2px solid #DC2626;
            padding-bottom: 2px;
            transition: all 0.2s;
+           font-weight: 700;
        "
-       onmouseover="this.style.borderColor='white'"
-       onmouseout="this.style.borderColor='rgba(255,255,255,0.6)'">
+       onmouseover="this.style.borderColor='#B91C1C'; this.style.color='#7F1D1D'"
+       onmouseout="this.style.borderColor='#DC2626'; this.style.color='#B91C1C'">
        🌐 Новый адрес: plecohobby.github.io/AquaCalc/
     </a>
     <button onclick="document.getElementById('migrationBanner').style.display='none'" 
             style="
-                background: rgba(255,255,255,0.2);
-                border: none;
+                background: #DC2626;
+                border: 2px solid #B91C1C;
                 color: white;
-                width: 28px;
-                height: 28px;
+                width: 30px;
+                height: 30px;
                 border-radius: 50%;
                 cursor: pointer;
-                font-size: 16px;
+                font-size: 18px;
                 line-height: 1;
                 margin-left: 8px;
+                transition: all 0.2s;
+                font-weight: bold;
             "
+            onmouseover="this.style.background='#B91C1C'"
+            onmouseout="this.style.background='#DC2626'"
             aria-label="Закрыть">✕</button>
 </div>
 <!-- 🔚 КОНЕЦ BANNER 🔚 -->
