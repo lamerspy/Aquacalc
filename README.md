@@ -44,7 +44,7 @@ Tool for precise calculation of salt dosages for aquarium water preparation. Hel
 | Параметр | Описание | Default |
 |----------|----------|---------|
 | GH | Общая жёсткость | 6 °dGH |
-| KH | Карбонатная жёсткость | 2.0 °dKH |
+| KH | Карбонатная жёсткость | 2 °dKH |
 | Объём | Количество воды | 10 л |
 | Ca:Mg | Соотношение кальция к магнию | 4:1 |
 
@@ -145,7 +145,7 @@ This calculator is provided for informational purposes only.
 - [ ] Генерация ссылки с параметрами для шеринга
 - [ ] Поддержка импорта/экспорта настроек
 - [ ] Мобильная PWA-версия
-- [ ] Мультиязычность (EN/RU/PT)
+- [ ] Мультиязычность (EN/RU)
 
 ---
 
